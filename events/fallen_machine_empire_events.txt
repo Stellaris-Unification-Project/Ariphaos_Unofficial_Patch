@@ -725,8 +725,6 @@ country_event = {
 		NOR = {
 			is_homicidal = yes
 			has_authority = auth_machine_intelligence
-		}
-		NOR = {
 			has_country_flag = fe_task_given
 			has_global_flag = fe_task_attack_empire_active
 		}
@@ -1033,8 +1031,6 @@ country_event = {
 		NOR = {
 			is_homicidal = yes
 			has_authority = auth_machine_intelligence
-		}
-		NOR = {
 			has_country_flag = fe_task_given
 			has_global_flag = fe_task_colonize_planet_active
 		}

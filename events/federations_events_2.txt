@@ -915,8 +915,6 @@ country_event = {
 							NOR = {
 								is_ship_class = shipclass_military_station
 								is_ship_class = shipclass_mining_station
-							}
-							NOR = {
 								is_ship_class = shipclass_research_station
 								is_ship_class = shipclass_observation_station
 							}
@@ -1033,8 +1031,6 @@ country_event = {
 								NOR = {
 									is_ship_class = shipclass_military_station
 									is_ship_class = shipclass_mining_station
-								}
-								NOR = {
 									is_ship_class = shipclass_research_station
 									is_ship_class = shipclass_observation_station
 								}

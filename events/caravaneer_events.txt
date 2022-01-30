@@ -4223,8 +4223,8 @@ country_event = {
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
 			has_country_flag = pops_join_caravan_recent
+			has_country_flag = caravan_recent_event
 		}
-		NOT = { has_country_flag = caravan_recent_event }
 		caravaneer_fleet_events_valid = yes
 		any_system_within_border = {
 			caravaneer_fleet_in_system = yes

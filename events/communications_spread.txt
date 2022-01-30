@@ -166,8 +166,8 @@ country_event = {
 			NOR = {
 				has_country_flag = starting_event
 				has_valid_civic = civic_inwards_perfection
+				is_country = ROOT
 			}
-			NOT = { is_country = ROOT }
 			has_communications = ROOT
 			OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)
 				NOT = { has_origin = origin_scion }
@@ -195,8 +195,8 @@ country_event = {
 				NOR = {
 					has_country_flag = starting_event
 					has_valid_civic = civic_inwards_perfection
+					is_country = ROOT
 				}
-				NOT = { is_country = ROOT }
 				has_communications = ROOT
 				OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)
 					NOT = { has_origin = origin_scion }

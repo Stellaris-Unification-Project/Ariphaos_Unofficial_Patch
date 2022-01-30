@@ -8194,8 +8194,8 @@ country_event = {
 							NOR = {
 								is_same_value = event_target:curator_customer_1
 								is_same_value = event_target:curator_customer_2
+								is_same_value = event_target:curator_customer_3
 							}
-							NOT = { is_same_value = event_target:curator_customer_3 }
 							valid_curators_intel_trade_target = yes
 						}
 						save_event_target_as = curator_customer_4
