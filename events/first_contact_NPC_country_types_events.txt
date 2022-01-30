@@ -183,11 +183,7 @@ first_contact_event = {
 		name = first_contact_critters.5.A
 		trigger = {
 			owner = {
-				NOR = {
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_machine_terminator
-				}
+				is_homicidal = no
 			}
 		}
 	}
@@ -243,10 +239,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
+				is_spiritualist = yes
 			}
 		}
 		text = story.501.desc.spiri
@@ -255,8 +248,7 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
+					is_spiritualist = yes
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
@@ -309,8 +301,7 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
+					is_materialist = yes
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
@@ -351,10 +342,8 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
+					is_materialist = yes
+					is_spiritualist = yes
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
@@ -561,10 +550,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = yes
 			}
 		}
 		text = story.201.desc.phile
@@ -573,10 +559,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		text = story.201.desc.phobe
@@ -585,10 +568,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 		text = story.201.desc.pacif
@@ -597,10 +577,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
+				is_spiritualist = yes
 			}
 		}
 		text = story.201.desc.spiri
@@ -609,10 +586,7 @@ first_contact_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-				}
+				is_militarist = yes
 			}
 		}
 		text = story.201.desc.milit
@@ -622,16 +596,11 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
+					is_militarist = yes
+					is_spiritualist = yes
+					is_pacifist = yes
+					is_xenophobe = yes
+					is_xenophile = yes
 				}
 			}
 		}
@@ -744,14 +713,14 @@ first_contact_event = {
 	# Materialist
 	desc = {
 		trigger = {
-			owner = { OR = { has_ethic = ethic_materialist has_ethic = ethic_fanatic_materialist } }
+			owner = { OR = { is_materialist = yes } }
 		}
 		text = story.301.desc.mater
 	}
 	# Pacifist
 	desc = {
 		trigger = {
-			owner = { OR = { has_ethic = ethic_pacifist has_ethic = ethic_fanatic_pacifist } }
+			owner = { OR = { is_pacifist = yes } }
 		}
 		text = story.301.desc.pacif
 	}
@@ -760,10 +729,8 @@ first_contact_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
+					is_materialist = yes
+					is_pacifist = yes
 				}
 			}
 		}
@@ -1326,7 +1293,7 @@ first_contact_event = {
 
 	option = {
 		name = story.401.c
-		trigger = { owner = { NOT = { is_spiritualist = yes } } }
+		trigger = { owner = { is_spiritualist = no } }
 		owner = {
 			# planet/owner project, best start in country scope, instead of location scope
 			enable_special_project = {
@@ -1558,10 +1525,8 @@ country_event = {
 		if = {
 			limit = {
 				from = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 				}
 			}
 			establish_communications_no_message = from

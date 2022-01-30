@@ -22,7 +22,7 @@ country_event = {
 		}
 		create_leader = {
 			class = admiral
-			species = last_created
+			species = last_created_species
 			name = "0101010111 Risa"
 			skill = 3
 			#traits = {	# Risa fix: Conflicted with traits granted by on_leader_spawned events
@@ -44,7 +44,7 @@ country_event = {
 		
 		create_leader = {
 			class = admiral
-			species = last_created
+			species = last_created_species
 			name = "0101010111 Vanilla"
 			skill = 3
 			traits = {
@@ -56,7 +56,7 @@ country_event = {
 		
 		create_leader = {
 			class = admiral
-			species = last_created
+			species = last_created_species
 			name = "NAME_S8751 Init Random"
 			skill = 3
 			traits = {
@@ -69,7 +69,7 @@ country_event = {
 		
 		create_leader = {
 			class = admiral
-			species = last_created
+			species = last_created_species
 			name = "NAME_S8751 Post Random"
 			skill = 3
 			event_leader = yes

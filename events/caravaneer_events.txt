@@ -1587,7 +1587,7 @@ fleet_event = {
 				NOT = { exists = space_owner }
 				AND = {
 					exists = space_owner
-					space_owner = { NOT = { is_same_value = root.fromfrom.space_owner } }
+					space_owner = { NOT = { is_same_empire = root.fromfrom.space_owner } }
 					# technically redundant
 				}
 			}
@@ -1834,7 +1834,7 @@ fleet_event = {
 				AND = {
 					exists = space_owner
 					space_owner = {
-						NOT = { is_same_value = root.from.space_owner }
+						NOT = { is_same_empire = root.from.space_owner }
 					}
 				}
 			}
@@ -2271,7 +2271,7 @@ fleet_event = {
 				NOT = { exists = space_owner }
 				AND = {
 					exists = space_owner
-					space_owner = { NOT = { is_same_value = root.fromfrom.space_owner } }
+					space_owner = { NOT = { is_same_empire = root.fromfrom.space_owner } }
 				}
 			}
 		}
@@ -2621,7 +2621,7 @@ fleet_event = {
 				AND = {
 					exists = space_owner
 					space_owner = {
-						NOT = { is_same_value = root.from.space_owner }
+						NOT = { is_same_empire = root.from.space_owner }
 					}
 				}
 			}
@@ -3098,7 +3098,7 @@ fleet_event = {
 				NOT = { exists = space_owner }
 				AND = {
 					exists = space_owner
-					space_owner = { NOT = { is_same_value = root.fromfrom.space_owner } }
+					space_owner = { NOT = { is_same_empire = root.fromfrom.space_owner } }
 				}
 			}
 		}
@@ -3237,7 +3237,7 @@ country_event = {
 	desc = fleet3hewwo3
 	desc = {
 		trigger = {
-			any_country = {
+			any_playable_country = {
 				is_country_type = default
 				has_communications = event_target:caravaneer_fleet3_country
 				NOT = { is_country = root }
@@ -3273,13 +3273,13 @@ country_event = {
 		#Generate 'scammer' country for fleet3hewwo4
 		if = {
 			limit = {
-				any_country = {
+				any_playable_country = {
 					is_country_type = default
 					has_communications = event_target:caravaneer_fleet3_country
 					NOT = { is_country = root }
 				}
 			}
-			random_country = {
+			random_playable_country = {
 				limit = {
 					is_country_type = default
 					has_communications = event_target:caravaneer_fleet3_country
@@ -3446,7 +3446,7 @@ fleet_event = {
 				AND = {
 					exists = space_owner
 					space_owner = {
-						NOT = { is_same_value = root.from.space_owner }
+						NOT = { is_same_empire = root.from.space_owner }
 					}
 				}
 			}
@@ -3715,9 +3715,7 @@ country_event = {
 				has_communications = from
 				NOR = {
 					is_same_value = root
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 				}
 			}
 			add_opinion_modifier = {
@@ -3769,7 +3767,7 @@ country_event = {
 	trigger = { # check that they still own the system
 		event_target:cara_home_new_location = {
 			exists = space_owner
-			space_owner = { is_same_value = root }
+			is_owned_by = root
 		}
 		# a caravan fleet still exists
 		OR = {
@@ -3907,7 +3905,7 @@ country_event = {
 
 	option = { # Reject
 		name = cara.930.c
-		trigger = { OR = { has_ethic = ethic_xenophobe has_ethic = ethic_fanatic_xenophobe } }
+		trigger = { OR = { is_xenophobe = yes } }
 		response_text = cara.940.b.reply
 		hidden_effect = { # find other empire
 			if = {
@@ -4222,8 +4220,10 @@ country_event = {
 	mean_time_to_happen = { years = 2 }
 
 	trigger = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-		NOT = { has_country_flag = pops_join_caravan_recent }
+		NOR = {
+			has_ethic = ethic_gestalt_consciousness
+			has_country_flag = pops_join_caravan_recent
+		}
 		NOT = { has_country_flag = caravan_recent_event }
 		caravaneer_fleet_events_valid = yes
 		any_system_within_border = {
@@ -4393,10 +4393,10 @@ country_event = {
 
 	trigger = {
 		caravaneer_fleet_events_valid = yes
-		NOT = {
+		NOR = {
 			has_country_flag = hulk_caravan_recent
+			has_country_flag = caravan_recent_event
 		}
-		NOT = { has_country_flag = caravan_recent_event }
 	}
 
 	immediate = {
@@ -4518,10 +4518,10 @@ country_event = {
 	mean_time_to_happen = { years = 1 }
 
 	trigger = {
-		NOT = {
+		NOR = {
 			has_country_flag = xenophobe_caravan_recent
+			has_country_flag = caravan_recent_event
 		}
-		NOT = { has_country_flag = caravan_recent_event }
 		is_xenophobe = yes
 		caravaneer_fleet_events_valid = yes
 		any_owned_planet = {
@@ -4580,10 +4580,10 @@ country_event = {
 	mean_time_to_happen = { years = 1 }
 
 	trigger = {
-		NOT = {
+		NOR = {
 			has_country_flag = xenophile_caravan_recent
+			has_country_flag = caravan_recent_event
 		}
-		NOT = { has_country_flag = caravan_recent_event }
 		OR = {
 			is_xenophile = yes
 			is_materialist = yes
@@ -4817,10 +4817,10 @@ country_event = {
 	mean_time_to_happen = { years = 1 }
 
 	trigger = {
-		NOT = {
+		NOR = {
 			has_country_flag = stealy_caravan_recent
+			has_country_flag = caravan_recent_event
 		}
-		NOT = { has_country_flag = caravan_recent_event }
 		caravaneer_fleet_events_valid = yes
 		any_owned_planet = {
 			is_colony = yes

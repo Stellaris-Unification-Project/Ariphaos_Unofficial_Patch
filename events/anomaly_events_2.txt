@@ -937,7 +937,7 @@ ship_event = {
 
 	option = {
 		name = anomaly.3010.a
-		trigger = { owner = { OR = { has_ethic = ethic_xenophobe has_ethic = ethic_fanatic_xenophobe } } }
+		trigger = { owner = { OR = { is_xenophobe = yes } } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = influence
@@ -1015,7 +1015,7 @@ ship_event = {
 	}
 
 	option = {
-		trigger = { owner = { OR = { has_ethic = ethic_pacifist has_ethic = ethic_fanatic_pacifist } } }
+		trigger = { owner = { OR = { is_pacifist = yes } } }
 		name = anomaly.3015.b.pacifist
 		owner = {
 			add_monthly_resource_mult = {
@@ -1131,7 +1131,7 @@ ship_event = {
 
 	option = {
 		name = anomaly.3030.a
-		trigger = { owner = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } } }
+		trigger = { owner = { is_xenophobe = no } }
 		custom_tooltip = anomaly.3030.a.tooltip
 		hidden_effect = {
 			owner = {
@@ -1794,9 +1794,11 @@ country_event = {
 				is_ai = yes
 				is_country_type = default
 				has_communications = root
-				NOT = { is_country = root }
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { is_xenophobe = yes }
+				NOR = {
+					is_country = root
+					has_ethic = ethic_gestalt_consciousness
+				}
+				is_xenophobe = no
 			}
 			save_event_target_as = book_writer
 		}
@@ -2321,9 +2323,9 @@ country_event = {
 		if = {
 			limit = {
 				from = {
-					OR = {
-						NOT = { has_established_contact = root }
-						NOT = { is_country_type = default }
+					NAND = {
+						has_established_contact = root
+						is_country_type = default
 					}
 				}
 			}
@@ -3162,10 +3164,7 @@ ship_event = {
 		name = anomaly.3125.a
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		owner = { add_resource = { influence = 100 } }
@@ -3187,7 +3186,7 @@ ship_event = {
 
 	option = {
 		name = anomaly.3125.c
-		trigger = { owner = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } } }
+		trigger = { owner = { is_xenophobe = no } }
 	}
 }
 
@@ -3237,10 +3236,7 @@ ship_event = {
 			#}
 			if = {
 				limit = {
-					OR = {
-						has_ethic = ethic_materialist
-						has_ethic = ethic_fanatic_materialist
-					}
+					is_materialist = yes
 				}
 				set_country_flag = opt2
 			}
@@ -3308,10 +3304,7 @@ ship_event = {
 		name = anomaly.3127.a.2 #We can learn much
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}
+				is_materialist = yes
 			}
 		}
 		owner = {
@@ -3332,10 +3325,7 @@ ship_event = {
 		name = anomaly.3127.a.3
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}
+				is_materialist = no
 			}
 		}
 		owner = {
@@ -3482,10 +3472,8 @@ ship_event = {
 		trigger = {
 			hidden:owner = {
 				NOR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
+					is_egalitarian = yes
+					is_authoritarian = yes
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
@@ -3496,8 +3484,7 @@ ship_event = {
 		trigger = {
 			hidden:owner = {
 				OR = {
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
+					is_authoritarian = yes
 					has_ethic = ethic_gestalt_consciousness
 				}
 			}
@@ -3507,10 +3494,7 @@ ship_event = {
 		text = anomaly.3130.desc.mater
 		trigger = {
 			hidden:owner = {
-				OR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-				}
+				is_egalitarian = yes
 			}
 		}
 	}

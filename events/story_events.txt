@@ -59,7 +59,7 @@ country_event = {
 	}
 
 	option = {
-		trigger = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } }
+		trigger = { is_xenophobe = no }
 		name = INTRIGUING
 	}
 	option = {
@@ -315,7 +315,7 @@ country_event = {
 	}
 
 	option = {
-		trigger = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } }
+		trigger = { is_xenophobe = no }
 		name = FASCINATING
 	}
 
@@ -473,7 +473,7 @@ country_event = {
 	}
 
 	option = {
-		trigger = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } }
+		trigger = { is_xenophobe = no }
 		name = INTERESTING
 	}
 
@@ -563,8 +563,7 @@ country_event = {
 		FROM = {
 			NOR = {
 				has_country_flag = radical_cult
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+				is_fallen_empire = yes
 				is_country_type = primitive
 				is_guardian_country = yes
 				has_relation_flag = { flag = no_coms who = root }
@@ -589,7 +588,7 @@ country_event = {
 	}
 
 	option = {
-		trigger = { NOR = { has_ethic = ethic_fanatic_xenophobe has_ethic = ethic_xenophobe } }
+		trigger = { is_xenophobe = no }
 		name = INTRIGUING
 	}
 	option = {
@@ -865,30 +864,22 @@ country_event = {
 	# Phile
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 		}
 		text = story.205.desc.phile
 	}
 	# Pacifist
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = yes
 		}
 		text = story.205.desc.pacif
 	}
 	desc = {
 		trigger = {
 			NOR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
+				is_pacifist = yes
+				is_xenophile = yes
 				has_ethic = ethic_fanatic_spiritualist
 				has_ethic = ethic_spiritualist
 			}
@@ -1097,17 +1088,17 @@ country_event = {
 	}
 	# Phile
 	desc = {
-		trigger = { OR = { has_ethic = ethic_pacifist has_ethic = ethic_fanatic_pacifist } }
+		trigger = { OR = { is_pacifist = yes } }
 
 		text = story.305.desc.pacif
 	}
 	# Pacifist
 	desc = {
-		trigger = { OR = { has_ethic = ethic_materialist has_ethic = ethic_fanatic_materialist } }
+		trigger = { OR = { is_materialist = yes } }
 		text = story.305.desc.mater
 	}
 	desc = {
-		trigger = { NOR = { has_ethic = ethic_materialist has_ethic = ethic_fanatic_materialist has_ethic = ethic_pacifist has_ethic = ethic_fanatic_pacifist } }
+		trigger = { NOR = { is_materialist = yes is_pacifist = yes } }
 		text = story.305.desc
 	}
 	picture = GFX_evt_mining_station
@@ -1503,18 +1494,14 @@ country_event = {
 	# Spiri
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = yes
 		}
 		text = story.405.desc.spiri
 	}
 	desc = {
 		trigger = {
 			NOR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+				is_spiritualist = yes
 				has_ethic = ethic_gestalt_consciousness
 			}
 		}

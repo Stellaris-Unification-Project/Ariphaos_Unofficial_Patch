@@ -2196,7 +2196,7 @@ country_event = {
 						limit = {
 							any_system_planet = {
 								exists = owner
-								owner = { is_same_value = event_target:marauder_target }
+								is_owned_by = event_target:marauder_target
 								num_pops > 0
 							}
 						}
@@ -2206,7 +2206,7 @@ country_event = {
 						random_system_planet = {
 							limit = {
 								exists = owner
-								owner = { is_same_value = event_target:marauder_target }
+								is_owned_by = event_target:marauder_target
 								num_pops > 0
 							}
 							save_event_target_as = raid_planet
@@ -5068,9 +5068,7 @@ country_event = {
 			from = { has_country_flag = marauder_1 }
 			NOR = {
 				has_country_flag = marauder_ugly
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		set_country_flag = marauder_ugly
@@ -5315,8 +5313,7 @@ planet_event = {
 		owner = {
 			OR = {
 				is_country_type = default
-				is_country_type = awakened_fallen_empire
-				is_country_type = fallen_empire
+				is_fallen_empire = yes
 			}
 		}
 		NOT = { has_planet_flag = planet_raided }
@@ -5866,11 +5863,7 @@ country_event = {
 		trigger = {
 			from = {
 				has_country_flag = marauder_1
-				NOR = {
-					has_valid_civic = "civic_fanatic_purifiers"
-					has_valid_civic = "civic_hive_devouring_swarm"
-					has_valid_civic = "civic_machine_terminator"
-				}
+				is_homicidal = no
 			}
 		}
 		response_text = marauder.112.1.a.response
@@ -5882,11 +5875,7 @@ country_event = {
 		trigger = {
 			from = {
 				has_country_flag = marauder_2
-				NOR = {
-					has_valid_civic = "civic_fanatic_purifiers"
-					has_valid_civic = "civic_hive_devouring_swarm"
-					has_valid_civic = "civic_machine_terminator"
-				}
+				is_homicidal = no
 			}
 		}
 		response_text = marauder.112.2.a.response
@@ -5898,11 +5887,7 @@ country_event = {
 		trigger = {
 			from = {
 				has_country_flag = marauder_3
-				NOR = {
-					has_valid_civic = "civic_fanatic_purifiers"
-					has_valid_civic = "civic_hive_devouring_swarm"
-					has_valid_civic = "civic_machine_terminator"
-				}
+				is_homicidal = no
 			}
 		}
 		response_text = marauder.112.3.a.response
@@ -6554,7 +6539,7 @@ event = {
 								limit = {
 									any_system_planet = {
 										exists = owner
-										owner = { is_same_empire = event_target:marauder_target }
+										is_owned_by = event_target:marauder_target
 										num_pops > 0
 									}
 								}
@@ -6564,7 +6549,7 @@ event = {
 								random_system_planet = {
 									limit = {
 										exists = owner
-										owner = { is_same_empire = event_target:marauder_target }
+										is_owned_by = event_target:marauder_target
 										num_pops > 0
 									}
 									save_event_target_as = raid_planet
@@ -7711,9 +7696,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.508.desc.2"
@@ -7722,9 +7705,7 @@ country_event = {
 	desc = {
 		trigger = {
 			OR = {
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.508.desc.3"
@@ -8226,9 +8207,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.a.desc"
@@ -8238,9 +8217,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.b.desc"
@@ -8250,9 +8227,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.c.desc"
@@ -8262,9 +8237,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.d.desc"
@@ -8274,9 +8247,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.e.desc"
@@ -8286,9 +8257,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.f.desc"
@@ -8298,9 +8267,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.g.desc"
@@ -8310,9 +8277,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.h.desc"
@@ -8322,9 +8287,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.i.desc"
@@ -8398,9 +8361,7 @@ country_event = {
 	desc = {
 		trigger = {
 			OR = {
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		text = "marauder.550.v.desc"
@@ -8445,9 +8406,7 @@ country_event = {
 			NOR = {
 				is_subject_type = satrapy
 				has_country_flag = rebelling_satrapy
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		hidden_effect = {
@@ -8470,9 +8429,7 @@ country_event = {
 			from = { has_country_flag = marauder_2 }
 			NOR = {
 				has_country_flag = asked_about_language
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		response_text = marauder.550.b.response
@@ -8488,9 +8445,7 @@ country_event = {
 			from = { has_country_flag = marauder_3 }
 			NOR = {
 				has_country_flag = asked_about_religion
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
+				is_homicidal = yes
 			}
 		}
 		response_text = marauder.550.c.response
@@ -8783,11 +8738,7 @@ country_event = {
 		is_country_type = default
 		is_subject = no
 		is_ai = yes
-		NOR = {
-			has_valid_civic = "civic_fanatic_purifiers"
-			has_valid_civic = "civic_hive_devouring_swarm"
-			has_valid_civic = "civic_machine_terminator"
-		}
+		is_homicidal = no
 		check_variable = {
 			which = "planets_lost_to_marauder"
 			value > 2
@@ -8904,7 +8855,7 @@ fleet_event = {
 	trigger = {
 		has_global_flag = marauder_crisis_started
 		NOT = { has_global_flag = great_khan_dead }
-		owner = { is_same_empire = event_target:raider_khanate }
+		is_owned_by = event_target:raider_khanate
 	}
 
 	immediate = {

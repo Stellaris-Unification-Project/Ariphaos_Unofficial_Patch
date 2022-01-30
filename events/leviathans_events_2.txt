@@ -81,10 +81,7 @@ country_event = {
 			set_country_flag = guardians_stellarite_encountered
 			country_event = { id = story.8 days = 15 }
 			event_target:stellarite_system = {
-				random_system_planet = {
-					limit = {
-						is_star = yes
-					}
+				star = {
 					change_planet_size = -5
 					spawn_sun_temperature_effect = yes
 					create_country = {
@@ -815,7 +812,7 @@ country_event = {
 				location = this
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -867,10 +864,8 @@ country_event = {
 		name = leviathans.1016.b
 		trigger = {
 			OR = {
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_militarist = yes
+				is_xenophobe = yes
 			}
 		}
 		add_resource = { influence = 500 }
@@ -944,10 +939,7 @@ ship_event = {
 			limit = {
 				has_star_flag = guardians_stellarite_system
 			}
-			random_system_planet = {
-				limit = {
-					is_star = yes
-				}
+			star = {
 				enable_special_project = {
 					name = "STELLARITE_STAR_PROJECT"
 					location = this
@@ -1042,10 +1034,7 @@ ship_event = {
 				limit = {
 					has_star_flag = guardians_stellarite_system
 				}
-				random_system_planet = {
-					limit = {
-						is_star = yes
-					}
+				star = {
 					change_planet_size = 12
 					spawn_sun_temperature_effect = yes
 				}
@@ -1101,10 +1090,7 @@ ship_event = {
 				limit = {
 					has_star_flag = guardians_stellarite_system
 				}
-				random_system_planet = {
-					limit = {
-						is_star = yes
-					}
+				star = {
 					change_planet_size = 8
 					planet_event = { id = leviathans.1019 }
 				}
@@ -1347,7 +1333,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -1362,7 +1348,7 @@ country_event = {
 			remove_point_of_interest = curator_poi_technosphere
 			end_curator_chain = yes
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = technosphere_chain
@@ -1442,7 +1428,7 @@ country_event = {
 				save_event_target_as = slain_guardian_system
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -1457,7 +1443,7 @@ country_event = {
 			remove_point_of_interest = curator_poi_technosphere
 			end_curator_chain = yes
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = technosphere_chain
@@ -2010,10 +1996,7 @@ country_event = {
 			limit = {
 				has_star_flag = guardians_technosphere_system
 			}
-			random_system_planet = {
-				limit = {
-					is_star = yes
-				}
+			star = {
 				save_event_target_as = technosphere_blackhole
 			}
 		}
@@ -2054,10 +2037,7 @@ country_event = {
 			limit = {
 				has_star_flag = guardians_technosphere_system
 			}
-			random_system_planet = {
-				limit = {
-					is_star = yes
-				}
+			star = {
 				save_event_target_as = technosphere_blackhole
 			}
 		}
@@ -2162,10 +2142,7 @@ country_event = {
 			limit = {
 				has_star_flag = guardians_technosphere_system
 			}
-			random_system_planet = {
-				limit = {
-					is_star = yes
-				}
+			star = {
 				save_event_target_as = technosphere_blackhole
 			}
 		}
@@ -2262,8 +2239,7 @@ country_event = {
 		hidden_effect = {
 			event_target:technosphere_ship = {
 				solar_system = {
-					random_system_planet = {
-						limit = { is_star = yes }
+					star = {
 						add_deposit = d_physics_4
 						add_deposit = d_engineering_4
 						add_deposit = d_society_4
@@ -2308,8 +2284,7 @@ country_event = {
 		hidden_effect = {
 			add_resource = { influence = 200 }
 			event_target:technosphere_ship.solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					solar_system = {
 						set_name = "NAME_Pantagruel"
 					}
@@ -2339,7 +2314,7 @@ country_event = {
 					if = {
 						limit = {
 							exists = space_owner
-							space_owner = { is_same_value = root }
+							is_owned_by = root
 						}
 						space_owner = {
 							add_modifier = {
@@ -2660,7 +2635,7 @@ country_event = {
 		fromfrom.solar_system = {
 			save_event_target_as = slain_guardian_system
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -3250,8 +3225,7 @@ country_event = {
 		name = "leviathans.2150.a"
 		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					enable_special_project = {
 						name = "ENIGMATIC_FORTRESS_5B"
 						location = this
@@ -3316,7 +3290,7 @@ country_event = {
 		event_target:disabled_enigmatic_fortress = {
 			save_event_target_as = slain_guardian_system
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -3333,8 +3307,7 @@ country_event = {
 		}
 		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					create_ambient_object = {
 						type = "dead_enigmatic_fortress_object"
 						location = solar_system
@@ -3454,7 +3427,7 @@ country_event = {
 		event_target:disabled_enigmatic_fortress = {
 			save_event_target_as = slain_guardian_system
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -3471,8 +3444,7 @@ country_event = {
 		}
 		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					create_ambient_object = {
 						type = "dead_enigmatic_fortress_object"
 						location = solar_system
@@ -3580,7 +3552,7 @@ country_event = {
 		event_target:disabled_enigmatic_fortress = {
 			save_event_target_as = slain_guardian_system
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -3597,8 +3569,7 @@ country_event = {
 		}
 		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					create_ambient_object = {
 						type = "dead_enigmatic_fortress_object"
 						location = solar_system
@@ -3669,7 +3640,7 @@ country_event = {
 		event_target:disabled_enigmatic_fortress = {
 			save_event_target_as = slain_guardian_system
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -3686,8 +3657,7 @@ country_event = {
 		}
 		event_target:disabled_enigmatic_fortress = {
 			solar_system = {
-				random_system_planet = {
-					limit = { is_star = yes }
+				star = {
 					create_ambient_object = {
 						type = "large_debris_object" # Actually explosion
 						location = solar_system
@@ -3726,10 +3696,7 @@ country_event = {
 					every_system_planet = {
 						limit = {
 							habitable_planet = yes
-							NOR = {
-								is_planet_class = pc_ringworld_habitable
-								is_planet_class = pc_habitat
-							}
+							is_artificial = no
 						}
 						create_ambient_object = {
 							type = explosion_particle_object
@@ -3942,14 +3909,14 @@ country_event = {
 			country_event = { id = leviathans.3003 days = 6 }
 		}
 		destroy_country = yes
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_modifier = dimensional_horror_weak_points
 			}
 			remove_modifier = "dimensional_horror_weak_points"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -4167,14 +4134,14 @@ country_event = {
 			country_event = { id = leviathans.3102 }
 		}
 		destroy_country = yes
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_modifier = automated_dreadnought_weak_points
 			}
 			remove_modifier = "automated_dreadnought_weak_points"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain
@@ -4611,7 +4578,7 @@ country_event = {
 		has_country_flag = hive_country
 		count_owned_ship = {
 			limit = { is_ship_size = hive_asteroid }
-			count < 1 # count_owned_ships no longer counts dead ships
+			count < 1 # count_owned_ship no longer counts dead ships
 		}
 		FROM = {
 			has_country_flag = provoked_hivers
@@ -4636,14 +4603,14 @@ country_event = {
 		FROM = {
 			country_event = { id = leviathans.3204 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_modifier = asteroid_hive_weak_points
 			}
 			remove_modifier = "asteroid_hive_weak_points"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_event_chain = curator_poi_chain

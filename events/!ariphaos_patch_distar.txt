@@ -37,8 +37,7 @@ ship_event = { #Found the Capital
 		exclusive_trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_civic = civic_machine_terminator
 				}
 			}

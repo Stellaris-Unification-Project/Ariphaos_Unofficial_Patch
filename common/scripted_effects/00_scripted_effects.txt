@@ -38,8 +38,8 @@ print_scope_effect = {
 establish_communication_with_subjects_and_federation = {
 	every_subject = {
 		limit = {
-			NOT = { is_subject_type = scion }
 			NOR = {
+				is_subject_type = scion
 				has_communications = prevprev
 				has_active_first_contact_with = prevprev
 				has_country_flag = $FLAG$
@@ -1571,8 +1571,10 @@ add_random_leader_trait = {
 				5 = {
 					if = {
 						limit = {
-							NOT = { has_trait = leader_trait_butcher }
-							NOT = { has_trait = leader_trait_restrained }
+							NOR = {
+								has_trait = leader_trait_butcher
+								has_trait = leader_trait_restrained
+							}
 						}
 						add_trait = leader_trait_butcher
 						set_timed_leader_flag = { flag = gained_leader_trait_butcher days = 7 }
@@ -4874,7 +4876,7 @@ add_awakened_fallen_empire_fleet = {
 	country_event = { id = fallen_empires.13 }
 	if = {
 		limit = {
-			any_country = {
+			any_playable_country = {
 				is_country_type = default
 				OR = {
 					fleet_power > 120000
@@ -4898,7 +4900,7 @@ add_awakened_fallen_empire_fleet = {
 	}
 	if = {
 		limit = {
-			any_country = {
+			any_playable_country = {
 				is_country_type = default
 				OR = {
 					fleet_power > 200000
@@ -9258,8 +9260,10 @@ give_next_ai_tech_option_effect = {
 	}
 	else_if = {
 		limit = {
-			NOT = { has_technology = tech_sapient_ai }
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOR = {
+				has_technology = tech_sapient_ai
+				has_ethic = ethic_gestalt_consciousness
+			}
 		}
 		add_research_option = tech_sapient_ai
 		add_tech_progress = {
@@ -10979,8 +10983,8 @@ breach_fix_resolution_greatergood_greater_than_ourselves_no_utopia = {
 		limit = {
 			is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 			in_breach_of = resolution_greatergood_greater_than_ourselves
-			NOT = { host_has_dlc = "Utopia" }
 			NOR = {
+				host_has_dlc = "Utopia"
 				has_valid_civic = civic_indentured_assets
 				has_valid_civic = civic_slaver_guilds
 			}
@@ -11314,8 +11318,10 @@ breach_fix_resolution_divinity_a_defined_purpose_machine = {
 			is_active_resolution = "resolution_divinity_a_defined_purpose"
 			in_breach_of = resolution_divinity_a_defined_purpose
 			is_machine_empire = yes
-			NOT = { has_valid_civic = civic_machine_servitor }
-			NOT = { has_valid_civic = civic_machine_assimilator }
+			NOR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+			}
 			exists = event_target:defined_purpose_random_species
 		}
 		hidden_effect = {
@@ -11340,8 +11346,10 @@ breach_fix_resolution_divinity_a_defined_purpose_machine = {
 			is_active_resolution = "resolution_divinity_a_defined_purpose"
 			in_breach_of = resolution_divinity_a_defined_purpose
 			is_machine_empire = yes
-			NOT = { has_valid_civic = civic_machine_servitor }
-			NOT = { has_valid_civic = civic_machine_assimilator }
+			NOR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+			}
 			NOT = { exists = event_target:defined_purpose_random_species }
 		}
 		hidden_effect = {
@@ -12209,7 +12217,7 @@ destroy_machine_world = {
 				}
 			}
 			observer_event = { id = observer.50 }
-			every_country = {
+			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = crisis.2037 }
 			}
@@ -12255,12 +12263,12 @@ destroy_machine_world = {
 					remove_modifier = "ship_ghost_signal_4"
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { has_special_project = AI_CRISIS_PROJECT }
 				abort_special_project = { type = AI_CRISIS_PROJECT }
 			}
 			observer_event = { id = observer.50 }
-			every_country = {
+			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = crisis.2037 }
 			}
@@ -12292,7 +12300,7 @@ destroy_machine_world = {
 				}
 			}
 			observer_event = { id = observer.50 }
-			every_country = {
+			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = crisis.2037 }
 			}

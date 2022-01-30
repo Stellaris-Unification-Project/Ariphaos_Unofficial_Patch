@@ -284,8 +284,7 @@ fleet_event = {
 					space_owner = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 						NOR = {
 							is_hostile = event_target:nomad_owner
@@ -307,8 +306,7 @@ fleet_event = {
 					space_owner = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 						NOR = {
 							is_hostile = event_target:nomad_owner
@@ -368,8 +366,7 @@ fleet_event = {
 					space_owner = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 						is_hostile = event_target:nomad_owner
 					}
@@ -388,8 +385,7 @@ fleet_event = {
 					space_owner = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 					}
 				}
@@ -646,12 +642,9 @@ fleet_event = {
 					}
 					else_if = {
 						limit = {
-							NOT = {
-								check_variable = {
+							check_variable = {
 									which = nomads_built_ships
-									value = 0
-								}
-							}
+									value != 0 }
 						}
 						set_variable = {
 							which = nomads_built_ships
@@ -937,10 +930,8 @@ country_event = {
 		name = "nomad.9.a"
 		trigger = {
 			NOR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophile = yes
+				is_xenophobe = yes
 			}
 		}
 	}
@@ -948,18 +939,14 @@ country_event = {
 		name = "nomad.9.a.phobe"
 		trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 		}
 	}
 	option = {
 		name = "nomad.9.c.phile"
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 		}
 	}
 }
@@ -1547,7 +1534,7 @@ country_event = {
 			hidden_effect = {
 				random_spynetwork = {
 					limit = {
-						owner = { is_same_value = root }
+						is_owned_by = root
 						target = { is_same_value = event_target:contact_empire }
 					}
 					add_modifier = {
@@ -1633,12 +1620,9 @@ fleet_event = {
 			}
 			else_if = {
 				limit = {
-					NOT = {
-						check_variable = {
+					check_variable = {
 							which = nomads_attacked_systems
-							value = 0
-						}
-					}
+							value != 0 }
 				}
 				set_variable = {
 					which = nomads_attacked_systems
@@ -2276,10 +2260,7 @@ country_event = {
 				has_ethic = ethic_fanatic_spiritualist
 				has_ethic = ethic_spiritualist
 			}
-			NOR = {
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		add_resource = { influence = -50 }
 		hidden_effect = {
@@ -2481,8 +2462,7 @@ fleet_event = {
 					space_owner = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 						NOR = {
 							is_hostile = root.owner
@@ -2628,11 +2608,7 @@ country_event = {
 			if = {
 				limit = {
 					has_fleet_flag = nomad_on_mission
-					solar_system = {
-						space_owner = {
-							is_same_value = event_target:attacker_country
-						}
-					}
+					solar_system = { is_owned_by = event_target:attacker_country }
 				}
 				remove_fleet_flag = nomad_on_mission
 			}
@@ -2760,11 +2736,7 @@ country_event = {
 			if = {
 				limit = {
 					has_fleet_flag = nomad_on_mission
-					solar_system = {
-						space_owner = {
-							is_same_value = event_target:attacker_country
-						}
-					}
+					solar_system = { is_owned_by = event_target:attacker_country }
 				}
 				remove_fleet_flag = nomad_on_mission
 			}

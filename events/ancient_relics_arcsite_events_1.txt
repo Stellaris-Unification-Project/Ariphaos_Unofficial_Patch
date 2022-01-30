@@ -29,12 +29,14 @@ ship_event = {
 		owner = { is_ai = no }
 		owner = { is_gestalt = no }
 		solar_system = { has_star_flag = precursor_zroni_1 }
-		solar_system = { NOT = { is_same_value = root.owner.capital_scope.solar_system } }
+		solar_system = { NOT = { is_same_empire = root.owner.capital_scope.solar_system } }
 		NOT = { has_global_flag = zroni_started }
 		FROM = {
 			has_anomaly = no
-			NOT = { exists = archaeological_site }
-			NOT = { has_planet_flag = suppress_archaeological_sites }
+			NOR = {
+				exists = archaeological_site
+				has_planet_flag = suppress_archaeological_sites
+			}
 			habitable_planet = yes
 		}
 		owner = {
@@ -144,13 +146,13 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_empire = root.owner.capital_scope.solar_system
 					has_star_flag = hostile_system
 				}
 				is_fe_cluster = no
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					habitable_planet = yes
@@ -201,13 +203,13 @@ fleet_event = {
 					NOR = {
 						is_same_value = root.solar_system
 						has_star_flag = first_zoroni_site@root.owner
-						is_same_value = root.owner.capital_scope.solar_system
+						is_same_empire = root.owner.capital_scope.solar_system
 						has_star_flag = hostile_system
 					}
 					is_fe_cluster = no
 					OR = {
 						has_owner = no
-						owner = { is_same_value = root.owner }
+						is_owned_by = root.owner
 					}
 					any_system_planet = {
 						OR = {
@@ -325,13 +327,13 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_empire = root.owner.capital_scope.solar_system
 					has_star_flag = hostile_system
 				}
 				is_fe_cluster = no
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					habitable_planet = yes
@@ -382,13 +384,13 @@ fleet_event = {
 					NOR = {
 						is_same_value = root.solar_system
 						has_star_flag = first_zoroni_site@root.owner
-						is_same_value = root.owner.capital_scope.solar_system
+						is_same_empire = root.owner.capital_scope.solar_system
 						has_star_flag = hostile_system
 					}
 					is_fe_cluster = no
 					OR = {
 						has_owner = no
-						owner = { is_same_value = root.owner }
+						is_owned_by = root.owner
 					}
 					any_system_planet = {
 						OR = {
@@ -474,13 +476,13 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_empire = root.owner.capital_scope.solar_system
 					has_star_flag = hostile_system
 				}
 				is_fe_cluster = no
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					habitable_planet = yes
@@ -531,13 +533,13 @@ fleet_event = {
 					NOR = {
 						is_same_value = root.solar_system
 						has_star_flag = first_zoroni_site@root.owner
-						is_same_value = root.owner.capital_scope.solar_system
+						is_same_empire = root.owner.capital_scope.solar_system
 						has_star_flag = hostile_system
 					}
 					is_fe_cluster = no
 					OR = {
 						has_owner = no
-						owner = { is_same_value = root.owner }
+						is_owned_by = root.owner
 					}
 					any_system_planet = {
 						OR = {
@@ -630,13 +632,13 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_empire = root.owner.capital_scope.solar_system
 					has_star_flag = hostile_system
 				}
 				is_fe_cluster = no
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					habitable_planet = yes
@@ -687,13 +689,13 @@ fleet_event = {
 					NOR = {
 						is_same_value = root.solar_system
 						has_star_flag = first_zoroni_site@root.owner
-						is_same_value = root.owner.capital_scope.solar_system
+						is_same_empire = root.owner.capital_scope.solar_system
 						has_star_flag = hostile_system
 					}
 					is_fe_cluster = no
 					OR = {
 						has_owner = no
-						owner = { is_same_value = root.owner }
+						is_owned_by = root.owner
 					}
 					any_system_planet = {
 						OR = {
@@ -1564,7 +1566,7 @@ ship_event = {
 		solar_system = {
 			has_star_flag = precursor_baol_1
 			NOR = {
-				is_same_value = root.owner.capital_scope.solar_system
+				is_same_empire = root.owner.capital_scope.solar_system
 				has_star_flag = sol_system
 			}
 		}
@@ -1572,8 +1574,10 @@ ship_event = {
 		FROM = {
 			has_anomaly = no
 			is_star = no
-			NOT = { exists = archaeological_site }
-			NOT = { has_planet_flag = suppress_archaeological_sites }
+			NOR = {
+				exists = archaeological_site
+				has_planet_flag = suppress_archaeological_sites
+			}
 			NOR = {
 				is_planet_class = pc_gas_giant
 				is_planet_class = pc_molten
@@ -1653,13 +1657,15 @@ fleet_event = {
 				}
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					is_planet_class = pc_barren
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 			}
 			min_steps = 1
@@ -1669,8 +1675,10 @@ fleet_event = {
 				limit = {
 					is_planet_class = pc_barren
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 				save_event_target_as = baol_colony_1
 			}
@@ -1799,13 +1807,15 @@ fleet_event = {
 				}
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					is_planet_class = pc_asteroid
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 			}
 			min_steps = 1
@@ -1815,8 +1825,10 @@ fleet_event = {
 				limit = {
 					is_planet_class = pc_asteroid
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 				save_event_target_as = baol_colony_2
 			}
@@ -1950,7 +1962,7 @@ fleet_event = {
 				}
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					habitable_planet = yes
@@ -2550,8 +2562,7 @@ planet_event = { #Baol Life-Seeding complete
 		trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
+					is_xenophile = yes
 					has_valid_civic = civic_machine_servitor
 				}
 			}
@@ -3164,10 +3175,7 @@ country_event = {
 	option = {
 		name = "ancrel.2056.spiri"
 		trigger = {
-			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = yes
 		}
 		hidden_effect = { country_event = { id = ancrel.2064 } }
 	}
@@ -4251,7 +4259,7 @@ planet_event = {
 						solar_system = {
 							any_fleet_in_system = {
 								is_ship_class = shipclass_military
-								owner = { is_same_value = root.owner }
+								is_owned_by = root.owner
 								fleet_power >= 500
 							}
 						}
@@ -4286,8 +4294,10 @@ planet_event = {
 				NOT = {
 					any_owned_pop = {
 						species = {
-							NOT = { is_archetype = MACHINE }
-							NOT = { is_archetype = ROBOT }
+							NOR = {
+								is_archetype = MACHINE
+								is_archetype = ROBOT
+							}
 						}
 					}
 				}
@@ -4369,7 +4379,7 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					any_country = {
+					any_playable_country = {
 						has_event_chain = rubricator_chain_2
 					}
 				}
@@ -4383,7 +4393,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					any_country = {
+					any_playable_country = {
 						has_event_chain = rubricator_chain
 					}
 				}
@@ -4413,7 +4423,7 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					any_country = {
+					any_playable_country = {
 						has_event_chain = rubricator_chain_2
 					}
 				}
@@ -4427,7 +4437,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					any_country = {
+					any_playable_country = {
 						has_event_chain = rubricator_chain
 					}
 				}
@@ -4498,7 +4508,7 @@ country_event = {
 				event_target:rubricator_system = {
 					any_fleet_in_system = {
 						exists = owner
-						owner = { is_same_value = root }
+						is_owned_by = root
 					}
 					any_ship_in_system = {
 						is_same_value = event_target:rubricator_dragon_ship
@@ -4580,7 +4590,7 @@ fleet_event = {
 		event_target:rubricator_system = {
 			any_fleet_in_system = {
 				exists = owner
-				owner = { is_same_value = root.owner }
+				is_owned_by = root.owner
 			}
 			any_ship_in_system = {
 				is_same_value = event_target:rubricator_dragon_ship
@@ -4692,8 +4702,10 @@ planet_event = {
 
 	trigger = {
 		has_ancrel = yes
-		NOT = { exists = archaeological_site }
-		NOT = { has_planet_flag = suppress_archaeological_sites }
+		NOR = {
+			exists = archaeological_site
+			has_planet_flag = suppress_archaeological_sites
+		}
 		From = {
 			OR = {
 				is_deposit_type = d_dense_jungle
@@ -5393,13 +5405,15 @@ fleet_event = {
 				}
 				OR = {
 					has_owner = no
-					owner = { is_same_value = root.owner }
+					is_owned_by = root.owner
 				}
 				any_system_planet = {
 					is_planet_class = pc_gas_giant
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 			}
 			min_steps = 1
@@ -5408,8 +5422,10 @@ fleet_event = {
 				limit = {
 					is_planet_class = pc_gas_giant
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
-					NOT = { has_planet_flag = suppress_archaeological_sites }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = suppress_archaeological_sites
+					}
 				}
 				create_archaeological_site = endless_expanse_digsite_2
 			}
@@ -5444,10 +5460,7 @@ fleet_event = {
 		}
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_spiritualist
-				}
+				is_spiritualist = no
 			}
 		}
 	}
@@ -5559,10 +5572,7 @@ fleet_event = {
 		small_artifact_reward = yes
 		trigger = {
 			root.owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		root.owner = {
@@ -5588,10 +5598,7 @@ fleet_event = {
 		small_artifact_reward = yes
 		trigger = {
 			root.owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		root.owner = {
@@ -5738,10 +5745,7 @@ fleet_event = {
 		name = ancrel.4054.a
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		small_artifact_reward = yes
@@ -5759,10 +5763,7 @@ fleet_event = {
 		custom_tooltip = ancrel.4054.b.tooltip
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		small_artifact_reward = yes
@@ -5778,10 +5779,7 @@ fleet_event = {
 		name = ancrel.4054.c
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = no
 			}
 		}
 		event_target:sentinels_planet = {
@@ -5818,10 +5816,7 @@ planet_event = {
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		text = ancrel.4055.desc.phobe
@@ -5829,10 +5824,7 @@ planet_event = {
 	desc = {
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		text = ancrel.4055.desc.other
@@ -5899,10 +5891,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
+					is_xenophobe = yes
+					is_militarist = yes
 				}
 			}
 		}
@@ -5918,10 +5908,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
+					is_xenophobe = yes
+					is_militarist = yes
 				}
 			}
 		}

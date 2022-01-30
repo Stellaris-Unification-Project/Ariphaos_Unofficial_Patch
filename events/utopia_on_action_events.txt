@@ -463,7 +463,7 @@ country_event = {
 		}
 
 		observer_event = { id = observer.55 }
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 				NOT = { is_same_value = root }
@@ -486,10 +486,7 @@ country_event = {
 	desc = {
 		text = utopia.2505.1.desc
 		trigger = {
-			NOR = {
-				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_spiritualist
-			}
+			is_spiritualist = no
 		}
 	}
 	desc = {
@@ -509,10 +506,7 @@ country_event = {
 	option = {
 		name = "DISCONCERTING"
 		trigger = {
-			NOR = {
-				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_spiritualist
-			}
+			is_spiritualist = no
 		}
 	}
 	option = {
@@ -927,7 +921,7 @@ country_event = {
 		}
 
 		observer_event = { id = observer.4 }
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 				NOT = { is_same_value = root }
@@ -939,10 +933,8 @@ country_event = {
 		if = {
 			limit = {
 				any_country = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 					has_ethic = ethic_fanatic_spiritualist
 					has_communications = root
 					NOT = { is_same_value = root }
@@ -950,10 +942,8 @@ country_event = {
 			}
 			random_country = {
 				limit = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 					has_ethic = ethic_fanatic_spiritualist
 					has_communications = root
 					NOT = { is_same_value = root }
@@ -962,7 +952,7 @@ country_event = {
 			}
 		}
 		else = {
-			random_country = {
+			random_playable_country = {
 				limit = {
 					is_country_type = default
 					has_ethic = ethic_fanatic_spiritualist
@@ -991,10 +981,7 @@ country_event = {
 	desc = {
 		text = utopia.2555.1.desc
 		trigger = {
-			NOR = {
-				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_spiritualist
-			}
+			is_spiritualist = no
 		}
 	}
 	desc = {
@@ -1014,10 +1001,7 @@ country_event = {
 	option = {
 		name = "utopia.2555.a"
 		trigger = {
-			NOR = {
-				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_spiritualist
-			}
+			is_spiritualist = no
 		}
 	}
 	option = {
@@ -1240,7 +1224,7 @@ country_event = {
 		}
 		change_dominant_species = { species = event_target:psionic_species change_all = yes }
 		observer_event = { id = observer.5 }
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 				has_communications = root
@@ -1350,8 +1334,7 @@ country_event = {
 		name = "utopia.2602.a"
 		trigger = {
 			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+				is_materialist = yes
 				is_at_war_with = from
 				species = { has_trait = trait_psionic }
 			}
@@ -1360,10 +1343,7 @@ country_event = {
 	option = {
 		name = "utopia.2602.b"
 		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			is_materialist = yes
 			NOR = {
 				is_at_war_with = from
 				species = { has_trait = trait_psionic }
@@ -1519,8 +1499,7 @@ country_event = {
 				limit = {
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 				every_owned_leader = {
@@ -1561,7 +1540,7 @@ country_event = {
 				}
 			}
 			observer_event = { id = observer.6 }
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_ai = no
 					has_communications = root
@@ -1642,8 +1621,7 @@ country_event = {
 		name = AMAZING
 		trigger = {
 			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+				is_materialist = yes
 				is_at_war_with = from
 				species = { has_trait = trait_psionic }
 			}
@@ -1652,10 +1630,7 @@ country_event = {
 	option = {
 		name = "utopia.2652.b"
 		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			is_materialist = yes
 			NOR = {
 				is_at_war_with = from
 				species = { has_trait = trait_psionic }

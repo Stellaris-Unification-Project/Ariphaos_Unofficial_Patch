@@ -23,8 +23,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 			country_event = { id = crisis.2022 }
@@ -94,7 +93,7 @@ country_event = {
 			}
 		}
 		# Synth Infiltration
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			if = {
 				limit = {
@@ -136,12 +135,12 @@ country_event = {
 
 		observer_event = { id = observer.41 }
 		# The Ghost Signal
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2010 }
 		}
 		# Synths Act Strange
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2006 days = 100 random = 200 }
 		}
@@ -151,22 +150,22 @@ country_event = {
 			country_event = { id = crisis.2500 days = 100 random = 200 }
 		}
 		# Synths Disappear
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2007 days = 400 random = 200 }
 		}
 		# Synthetic Disappearances
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2020 days = 700 random = 200 }
 		}
 		# The Summons
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2021 days = 1000 random = 200 }
 		}
 		# The Arrival
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2022 days = 1400 }
 		}
@@ -191,7 +190,7 @@ country_event = {
 			planet_event = { id = crisis.2028 days = 1600 random = 10 }
 		}
 		# Synth Infiltration
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			if = {
 				limit = {
@@ -852,7 +851,7 @@ planet_event = {
 		create_ai_fleet = yes
 		create_ai_fleet = yes
 		random_country = { observer_event = { id = observer.45 } }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2030 }
 		}
@@ -860,15 +859,14 @@ planet_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 			establish_communications_no_message = event_target:AI_crisis
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -930,13 +928,13 @@ planet_event = {
 		create_ai_fleet = yes
 		create_ai_fleet = yes
 		random_country = { observer_event = { id = observer.46 } }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2031 }
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -994,13 +992,13 @@ planet_event = {
 		create_ai_fleet = yes
 		create_ai_fleet = yes
 		random_playable_country = { observer_event = { id = observer.47 } }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2032 }
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1075,13 +1073,13 @@ planet_event = {
 			}
 		}
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2033 }
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1337,12 +1335,12 @@ country_event = {
 			}
 		}
 		observer_event = { id = observer.49 }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2036 }
 			country_event = { id = crisis.2039 days = 5 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1604,7 +1602,7 @@ country_event = {
 		FROMFROM = {
 			every_owned_pop = { kill_pop = yes } # Kill Custodians
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1665,7 +1663,7 @@ planet_event = {
 			owner = event_target:contingency
 			type = "robotic_defense_army"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1769,12 +1767,12 @@ planet_event = {
 		}
 		else_if = {
 			limit = {
-				any_country = {
+				any_playable_country = {
 					is_ai = no
 					has_country_flag = does_not_compute
 				}
 			}
-			random_country = {
+			random_playable_country = {
 				limit = {
 					is_ai = no
 					has_country_flag = does_not_compute
@@ -1834,11 +1832,11 @@ planet_event = {
 				remove_modifier = "ship_ghost_signal_1"
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			end_event_chain = "ai_crisis_chain"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_special_project = SYNTH_INFILTRATION_PROJECT }
 			abort_special_project = { type = SYNTH_INFILTRATION_PROJECT }
 		}
@@ -1851,8 +1849,7 @@ planet_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 			country_event = { id = crisis.2038 }
@@ -2314,19 +2311,13 @@ country_event = {
 	desc = {
 		text = crisis.2300.desc_02
 		trigger = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 	}
 	desc = {
 		text = crisis.2300.desc_03
 		trigger = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 	}
 	desc = {
@@ -2335,19 +2326,13 @@ country_event = {
 	desc = {
 		text = crisis.2300.desc_05
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 	}
 	desc = {
 		text = crisis.2300.desc_06
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 	}
 
@@ -2384,10 +2369,7 @@ country_event = {
 	option = {
 		name = crisis.2300.b
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 		is_dialog_only = yes
 		response_text = crisis.2300.b.response
@@ -2405,10 +2387,7 @@ country_event = {
 	option = {
 		name = crisis.2300.e
 		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			is_materialist = yes
 		}
 		is_dialog_only = yes
 		response_text = crisis.2300.e.response
@@ -2443,7 +2422,7 @@ country_event = {
 				}
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				has_event_chain = "ai_crisis_chain"
 				NOT = { is_same_value = FROM }
@@ -2469,7 +2448,7 @@ country_event = {
 	}
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -2549,7 +2528,7 @@ event = {
 	}
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				OR = {
@@ -2628,7 +2607,7 @@ country_event = {
 			controller = { is_same_value = root }
 			solar_system = {
 				exists = starbase
-				starbase = { owner = { is_same_value = root } }
+				starbase = { is_owned_by = root }
 			}
 		}
 		NOT = {
@@ -2909,7 +2888,7 @@ event = {
 	}
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 				has_country_flag = synth_terror_country
@@ -3144,7 +3123,7 @@ planet_event = {
 		solar_system = {
 			exists = starbase
 			starbase = {
-				owner = { is_same_value = root.owner }
+				is_owned_by = root.owner
 			}
 		}
 		NOT = {
@@ -3544,7 +3523,7 @@ country_event = {
 			}
 		}
 		observer_event = { id = observer.52 }
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2401 days = 2 }
 		}
@@ -3700,7 +3679,7 @@ country_event = {
 
 	immediate = {
 		observer_event = { id = observer.53 }
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2405 }
 		}
@@ -3748,7 +3727,7 @@ country_event = {
 	immediate = {
 		set_global_flag = cybrex_departed
 		observer_event = { id = observer.54 }
-		every_country = {
+		every_playable_country = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.2407 }
 		}
@@ -3981,8 +3960,10 @@ country_event = {
 	trigger = {
 		is_ai = no
 		has_global_flag = cybrex_resurface
-		NOT = { has_global_flag = cybrex_destroyed }
-		NOT = { has_country_flag = cybrex_donation }
+		NOR = {
+			has_global_flag = cybrex_destroyed
+			has_country_flag = cybrex_donation
+		}
 		check_variable = {
 			which = "contingency_fleet_kills"
 			value > 100

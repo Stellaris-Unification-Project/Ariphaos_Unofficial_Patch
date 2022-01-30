@@ -190,7 +190,7 @@ planet_event = { #titanic life
 	option = {
 		name = colony_mod.2.c
 		trigger = {
-			owner = { OR = { has_ethic = ethic_xenophile has_ethic = ethic_fanatic_xenophile } #nice, for xenophiles
+			owner = { OR = { is_xenophile = yes } #nice, for xenophiles
 			}
 		}
 		# study them, bad outcome less likely but takes longer.
@@ -210,8 +210,7 @@ planet_event = { #titanic life
 		trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_authority = auth_hive_mind
 				} #mean, for xenophobe
 			}
@@ -867,8 +866,10 @@ planet_event = {
 			limit = {
 				has_modifier = strong_magnetic_field
 				has_modifier = "strong_magnetic_field"
-				NOT = { has_modifier = "magnetic_research_boost" }
-				NOT = { has_modifier = "magnetic_disruption" }
+				NOR = {
+					has_modifier = "magnetic_research_boost"
+					has_modifier = "magnetic_disruption"
+				}
 				has_ground_combat = no
 				num_pops > 0
 			}
@@ -972,8 +973,7 @@ planet_event = { # Rogue moon
 		}
 		num_pops > 0
 		NOR = {
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
+			is_artificial = yes
 			has_planet_flag = colony_event
 		}
 		has_moon = yes
@@ -1111,8 +1111,7 @@ planet_event = { #Dimensional portal
 		}
 		num_pops > 0
 		NOR = {
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
+			is_artificial = yes
 			has_planet_flag = colony_event
 		}
 	}
@@ -2838,8 +2837,7 @@ planet_event = {
 		is_occupied_flag = no
 		NOR = {
 			has_planet_flag = colony_event
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
+			is_artificial = yes
 		}
 		NOT = { owner = { has_country_flag = bluelotus } }
 		num_pops > 0
@@ -3257,8 +3255,7 @@ planet_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
+					is_egalitarian = yes
 					has_civic = civic_hive_empath
 					AND = {
 						is_machine_empire = yes
@@ -3278,8 +3275,7 @@ planet_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
+					is_xenophile = yes
 					has_civic = civic_hive_empath
 					has_civic = civic_machine_servitor
 				}
@@ -3489,8 +3485,7 @@ planet_event = {
 					owner = {
 						NOR = {
 							has_ethic = ethic_gestalt_consciousness
-							has_ethic = ethic_authoritarian
-							has_ethic = ethic_fanatic_authoritarian
+							is_authoritarian = yes
 						}
 					}
 				}

@@ -173,7 +173,7 @@ country_event = {
 		}
 		remove_global_flag = ongoing_market_nomination
 		# nominees start equal, modifiers improve chances
-		random_country = {
+		random_playable_country = {
 			limit = {
 				is_country_type = default
 				has_country_flag = market_nomination_eligible
@@ -462,7 +462,7 @@ country_event = {
 	desc = {
 		text = action.101.desc
 		trigger = {
-			NOT = { is_xenophobe = yes }
+			is_xenophobe = no
 		}
 	}
 	desc = {
@@ -794,13 +794,13 @@ event = {
 	trigger = {
 		has_global_flag = galactic_market_founded
 
-		OR = {
-			NOT = { is_on_market = volatile_motes }
-			NOT = { is_on_market = exotic_gases }
-			NOT = { is_on_market = rare_crystals }
-			NOT = { is_on_market = sr_living_metal }
-			NOT = { is_on_market = sr_zro }
-			NOT = { is_on_market = sr_dark_matter }
+		NAND = {
+			is_on_market = volatile_motes
+			is_on_market = exotic_gases
+			is_on_market = rare_crystals
+			is_on_market = sr_living_metal
+			is_on_market = sr_zro
+			is_on_market = sr_dark_matter
 		}
 	}
 
@@ -1024,9 +1024,9 @@ pop_event = {
 		owner = {
 			if = {
 				limit = {
-					OR = {
-						NOT = { exists = event_target:obsv_post_owner }
-						NOT = { is_same_value = event_target:obsv_post_owner }
+					NAND = {
+						exists = event_target:obsv_post_owner
+						is_same_value = event_target:obsv_post_owner
 					}
 				}
 				save_event_target_as = abductor
@@ -1041,9 +1041,9 @@ pop_event = {
 						if = {
 							limit = {
 								NOT = { is_same_value = event_target:abductor }
-								OR = {
-									NOT = { exists = event_target:obsv_post_owner }
-									NOT = { is_same_value = event_target:obsv_post_owner }
+								NAND = {
+									exists = event_target:obsv_post_owner
+									is_same_value = event_target:obsv_post_owner
 								}
 							}
 							country_event = { id = action.123 }
@@ -1070,7 +1070,7 @@ country_event = {
 		trigger = {
 			NOT = {
 				from = {
-					owner = { is_same_value = root }
+					is_owned_by = root
 				}
 			}
 		}
@@ -1079,7 +1079,7 @@ country_event = {
 	option = {
 		trigger = {
 			from = {
-				owner = { is_same_value = root }
+				is_owned_by = root
 			}
 		}
 		name = action.123.a

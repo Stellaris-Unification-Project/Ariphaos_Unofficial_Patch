@@ -2889,8 +2889,7 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
+					is_xenophile = yes
 					has_ethic = "ethic_gestalt_consciousness"
 					has_policy_flag = slavery_allowed
 				}
@@ -2967,10 +2966,7 @@ ship_event = {
 		custom_tooltip = "distar.71.pop.tooltip"
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
-				}
+				is_xenophile = yes
 				#any_owned_planet = {
 				#	free_housing > 1
 				#}
@@ -3523,10 +3519,7 @@ ship_event = {
 		name = FASCINATING
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		from = {
@@ -3542,10 +3535,7 @@ ship_event = {
 		name = "distar.234.phobe"
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		from = {
@@ -4810,16 +4800,11 @@ country_event = {
 		name = "distar.164.a"
 		trigger = {
 			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
+				is_xenophile = yes
+				is_materialist = yes
+				is_militarist = yes
+				is_pacifist = yes
+				is_egalitarian = yes
 				has_ethic = ethic_gestalt_consciousness
 			}
 		}
@@ -4842,14 +4827,10 @@ country_event = {
 		name = "distar.164.b"
 		trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+				is_xenophobe = yes
+				is_militarist = yes
+				is_materialist = yes
+				is_spiritualist = yes
 				has_ethic = ethic_gestalt_consciousness
 			}
 		}
@@ -5163,10 +5144,7 @@ ship_event = {
 	option = {
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		name = "distar.172.a"
@@ -5243,15 +5221,9 @@ ship_event = {
 		trigger = { # at least one sluggable pop in xenophobe empire
 			hidden_trigger = {
 				owner = {
-					OR = {
-						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xenophobe
-					}
+					is_xenophobe = yes
 					any_owned_pop = {
-						NOR = {
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
-						}
+						is_xenophobe = no
 					}
 				}
 			}
@@ -5262,10 +5234,7 @@ ship_event = {
 				count = 3
 				random_owned_pop = {
 					LIMIT = {
-						NOR = {
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
-						}
+						is_xenophobe = no
 						species = {
 							NOR = {
 								has_trait = trait_cybernetic
@@ -5579,10 +5548,7 @@ country_event = { #Cohabitants of Brainslugged pops generate initial Unrest
 	immediate = {
 		IF = {
 			LIMIT = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 			every_owned_planet = {
 				limit = {
@@ -6877,10 +6843,7 @@ fleet_event = { #Junkheap Ratlings
 		name = SCUM
 		exclusive_trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 	}
@@ -6932,8 +6895,7 @@ ship_event = { #Found the Capital
 		exclusive_trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_civic = civic_machine_terminator
 				}
 			}
@@ -7324,8 +7286,7 @@ country_event = { #Alert that the pre-space Ketlings have emerged
 		name = "distar.233.phobe"
 		exclusive_trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 				has_civic = civic_machine_terminator
 			}
 		}
@@ -7438,8 +7399,7 @@ ship_event = { #Origin of the Ketlings Special Project success
 		exclusive_trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_civic = civic_machine_terminator
 				}
 			}
@@ -7614,8 +7574,7 @@ country_event = { #Switch owner on ground invasion successful to prevent endless
 		name = EXCELLENT
 		exclusive_trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 				has_civic = civic_machine_terminator
 				has_civic = civic_machine_assimilator
 			}
@@ -7625,10 +7584,7 @@ country_event = { #Switch owner on ground invasion successful to prevent endless
 	option = {
 		name = UNFORTUNATE
 		exclusive_trigger = {
-			OR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = yes
 		}
 	}
 
@@ -8154,8 +8110,7 @@ country_event = { #Alert that the Ketling default empire has been created
 		name = "distar.234.phobe"
 		exclusive_trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 				has_civic = civic_machine_terminator
 			}
 		}
@@ -8175,8 +8130,7 @@ country_event = { #Alert that the Ketling default empire has been created
 		name = MARVELOUS
 		exclusive_trigger = {
 			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
+				is_xenophile = yes
 				has_civic = civic_machine_servitor
 			}
 		}
@@ -9082,7 +9036,7 @@ ship_event = { #A country completes the Special Project to Phase-Lock
 				limit = {
 					has_special_project = PHASESHIFT_PROJECT
 					NOT = {
-						is_same_value = root.owner
+						is_same_empire = root.owner
 					}
 				}
 				abort_special_project = { type = PHASESHIFT_PROJECT }
@@ -9124,11 +9078,11 @@ ship_event = { #Special Project Gatekeeper (on_starbase_transfer, on_building_st
 		owner = {
 			country_event = { id = distar.255 days = 1 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				has_special_project = PHASESHIFT_PROJECT
 				NOT = {
-					is_same_value = root.owner
+					is_same_empire = root.owner
 				}
 			}
 			abort_special_project = { type = PHASESHIFT_PROJECT }

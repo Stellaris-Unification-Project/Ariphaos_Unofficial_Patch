@@ -1246,7 +1246,7 @@ planet_event = {
 	trigger = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		exists = owner
-		owner = { is_same_value = event_target:syndaw_520_planet_owner }
+		is_owned_by = event_target:syndaw_520_planet_owner
 	}
 
 	option = {
@@ -1284,7 +1284,7 @@ planet_event = {
 
 	trigger = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
-		owner = { is_same_value = event_target:syndaw_520_planet_owner }
+		is_owned_by = event_target:syndaw_520_planet_owner
 	}
 
 	option = {
@@ -1364,7 +1364,7 @@ country_event = {
 	trigger = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		event_target:target_planet = {
-			owner = { is_same_value = root }
+			is_owned_by = root
 			is_occupied_flag = no
 			any_owned_pop = { has_trait = trait_mechanical }
 		}
@@ -1620,10 +1620,7 @@ planet_event = { # does this unit have a soul
 		custom_tooltip = syndaw.545.c.tooltip
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}
+				is_materialist = yes
 			}
 		}
 		hidden_effect = {
@@ -1765,10 +1762,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}
+				is_materialist = yes
 			}
 		}
 		text = syndaw.1020.desc.mater
@@ -1776,10 +1770,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
+				is_spiritualist = yes
 			}
 		}
 		text = syndaw.1020.desc.spiri
@@ -1787,10 +1778,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-				}
+				is_militarist = yes
 			}
 		}
 		text = syndaw.1020.desc.milit
@@ -1798,10 +1786,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 		text = syndaw.1020.desc.pacif
@@ -1809,10 +1794,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-				}
+				is_egalitarian = yes
 			}
 		}
 		text = syndaw.1020.desc.egali
@@ -1820,10 +1802,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
-				}
+				is_authoritarian = yes
 			}
 		}
 		text = syndaw.1020.desc.autho
@@ -1831,10 +1810,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = yes
 			}
 		}
 		text = syndaw.1020.desc.phile
@@ -1842,10 +1818,7 @@ planet_event = { #uprising
 	desc = {
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		text = syndaw.1020.desc.phobe
@@ -1854,22 +1827,14 @@ planet_event = { #uprising
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
+					is_xenophobe = yes
+					is_xenophile = yes
+					is_authoritarian = yes
+					is_egalitarian = yes
+					is_pacifist = yes
+					is_militarist = yes
+					is_spiritualist = yes
+					is_materialist = yes
 				}
 			}
 		}
@@ -1900,14 +1865,14 @@ planet_event = { #uprising
 				owned_planets_percentage = 0.5
 				planet_limit = {
 					OR = {
-						controller = { is_same_value = root.owner }
+						controller = { is_same_empire = root.owner }
 						solar_system = {
 							exists = starbase
-							starbase = { owner = { is_same_value = root.owner } }
+							starbase = { is_owned_by = root.owner }
 						}
 					}
 					solar_system = { # never flip any planets in the capital system
-						NOT = { any_system_planet = { is_same_value = root.owner.capital_scope } }
+						NOT = { any_system_planet = { is_same_empire = root.owner.capital_scope } }
 					}
 					is_under_colonization = no
 					any_owned_pop = {
@@ -2163,7 +2128,7 @@ country_event = {
 				every_fleet_in_system = {
 					limit = {
 						exists = owner
-						owner = { is_same_value = event_target:current_uprising_originator }
+						is_owned_by = event_target:current_uprising_originator
 						any_owned_ship = { is_ship_class = shipclass_military_station }
 					}
 					set_owner = root
@@ -2259,7 +2224,7 @@ country_event = {
 						has_star_flag = machup_system_flip
 						exists = starbase
 						starbase = {
-							owner = { is_same_value = event_target:current_uprising_originator }
+							is_owned_by = event_target:current_uprising_originator
 						}
 					}
 				}
@@ -2268,7 +2233,7 @@ country_event = {
 						has_star_flag = machup_system_flip
 						exists = starbase
 						starbase = {
-							owner = { is_same_value = event_target:current_uprising_originator }
+							is_owned_by = event_target:current_uprising_originator
 						}
 					}
 					starbase = { set_owner = root }
@@ -2293,7 +2258,7 @@ country_event = {
 						every_fleet_in_system = {
 							limit = {
 								exists = owner
-								owner = { is_same_value = event_target:current_uprising_originator }
+								is_owned_by = event_target:current_uprising_originator
 								any_owned_ship = { is_ship_class = shipclass_military_station }
 							}
 							set_owner = root
@@ -2603,19 +2568,13 @@ country_event = {
 	title = syndaw.1025.name
 	desc = {
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 		text = syndaw.1025.desc.machine
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 		text = syndaw.1025.desc
 	}
@@ -2645,19 +2604,13 @@ country_event = {
 	title = syndaw.1030.name
 	desc = {
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 		text = syndaw.1030.desc.machine
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 		text = syndaw.1030.desc
 	}
@@ -2678,19 +2631,13 @@ country_event = {
 	title = syndaw.1035.name
 	desc = {
 		trigger = {
-			OR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = yes
 		}
 		text = syndaw.1035.desc.machine
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 		text = syndaw.1035.desc
 	}
@@ -2773,10 +2720,7 @@ country_event = {
 			every_playable_country = {
 				limit = {
 					has_communications = root
-					NOR = {
-						has_country_flag = synthetic_empire
-						has_authority = auth_machine_intelligence
-					}
+					is_synthetic_empire = no
 				}
 				add_opinion_modifier = {
 					who = root
@@ -2786,10 +2730,7 @@ country_event = {
 			every_playable_country = {
 				limit = {
 					has_communications = root
-					OR = {
-						has_country_flag = synthetic_empire
-						has_authority = auth_machine_intelligence
-					}
+					is_synthetic_empire = yes
 					NOT = { is_same_value = root }
 				}
 				add_opinion_modifier = {
@@ -2859,22 +2800,14 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+				is_xenophobe = yes
+				is_xenophile = yes
+				is_authoritarian = yes
+				is_egalitarian = yes
+				is_pacifist = yes
+				is_militarist = yes
+				is_spiritualist = yes
+				is_materialist = yes
 			}
 		}
 		text = syndaw.1205.desc
@@ -2934,10 +2867,7 @@ country_event = {
 			every_playable_country = {
 				limit = {
 					has_communications = root
-					OR = {
-						has_country_flag = synthetic_empire
-						has_authority = auth_machine_intelligence
-					}
+					is_synthetic_empire = yes
 				}
 				add_opinion_modifier = {
 					who = root
@@ -2959,10 +2889,7 @@ country_event = {
 		has_authority = auth_machine_intelligence
 		has_civic = civic_machine_terminator
 		from = {
-			NOR = {
-				has_authority = auth_machine_intelligence
-				has_country_flag = synthetic_empire
-			}
+			is_synthetic_empire = no
 		}
 	}
 
@@ -2973,8 +2900,7 @@ country_event = {
 					any_country = {
 						OR = {
 							is_country_type = default
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
+							is_fallen_empire = yes
 						}
 						NOR = {
 							has_authority = auth_machine_intelligence

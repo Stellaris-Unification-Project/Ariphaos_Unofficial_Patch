@@ -3156,8 +3156,10 @@ country_event = {
 		random_country = {
 			limit = {
 				is_country_type = fallen_empire
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { is_at_war_with = root }
+				NOR = {
+					has_ethic = ethic_gestalt_consciousness
+					is_at_war_with = root
+				}
 				has_communications = root
 			}
 			save_event_target_as = fallen_empire
@@ -3739,8 +3741,10 @@ country_event = {
 		}
 		random_owned_leader = {
 			limit = {
-				NOT = { is_same_value = event_target:leader_1 }
-				NOT = { leader_class = ruler }
+				NOR = {
+					is_same_value = event_target:leader_1
+					leader_class = ruler
+				}
 				OR = {
 					has_trait = leader_trait_admiral_psionic
 					has_trait = leader_trait_general_psionic
@@ -3760,8 +3764,8 @@ country_event = {
 				NOR = {
 					is_same_value = event_target:leader_1
 					is_same_value = event_target:leader_2
+					leader_class = ruler
 				}
-				NOT = { leader_class = ruler }
 				OR = {
 					has_trait = leader_trait_admiral_psionic
 					has_trait = leader_trait_general_psionic
@@ -6079,10 +6083,7 @@ country_event = {
 		any_owned_planet = {
 			is_capital = no
 			num_pops > 5
-			NOR = {
-				is_planet_class = pc_habitat
-				is_planet_class = pc_ringworld_habitable
-			}
+			is_artificial = no
 		}
 	}
 
@@ -6091,10 +6092,7 @@ country_event = {
 			limit = {
 				is_capital = no
 				num_pops > 5
-				NOR = {
-					is_planet_class = pc_habitat
-					is_planet_class = pc_ringworld_habitable
-				}
+				is_artificial = no
 			}
 			save_event_target_as = planet_target
 			change_pc = pc_shrouded
@@ -6333,7 +6331,7 @@ country_event = {
 		}
 		set_leader = event_target:chosen_one
 		hidden_effect = {
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_ai = no
 					NOT = { is_same_value = root }

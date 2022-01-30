@@ -220,8 +220,10 @@ pop_event = {
 				}
 				random_owned_pop = {
 					limit = {
-						NOT = { is_pop = ROOT }
-						NOT = { has_pop_flag = modified_pop_1 }
+						NOR = {
+							is_pop = ROOT
+							has_pop_flag = modified_pop_1
+						}
 						is_same_species = ROOT
 						is_enslaved = no
 						is_being_purged = no
@@ -278,8 +280,7 @@ pop_event = {
 		NOR = {
 			has_ethic = ethic_fanatic_pacifist
 			has_ethic = ethic_pacifist
-			has_ethic = ethic_xenophile
-			has_ethic = ethic_fanatic_xenophile
+			is_xenophile = yes
 		}
 		planet = {
 			any_owned_pop = {

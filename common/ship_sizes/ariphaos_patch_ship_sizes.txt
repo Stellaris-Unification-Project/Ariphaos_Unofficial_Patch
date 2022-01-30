@@ -18,7 +18,7 @@ ariphaos_patch_salvage_cruiser = {
 	section_slots = { "bow" = { locator = "part1" } "mid" = { locator = "part2" } "stern" = { locator = "part3" } }
 	num_target_locators = 4
 	is_space_station = no
-	icon_frame = 4
+	icon = ship_size_military_4
 	class = shipclass_military
 	is_designable = no
 

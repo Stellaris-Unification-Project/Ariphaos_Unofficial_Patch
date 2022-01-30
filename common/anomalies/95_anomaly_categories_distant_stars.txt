@@ -17,7 +17,7 @@ DISTAR_WRECK_CAT = {
 					has_communications = from.owner
 					NOR = {
 						is_at_war_with = from.owner
-						is_same_value = from.owner
+						is_same_empire = from.owner
 					}
 					ROOT.solar_system = { has_access_fleet = prev }
 				}
@@ -345,7 +345,7 @@ DISTAR_RUM_CAT = {
 						NOR = {
 							has_ethic = ethic_gestalt_consciousness
 							is_at_war_with = from.owner
-							is_same_value = from.owner
+							is_same_empire = from.owner
 						}
 					}
 				}
@@ -845,7 +845,7 @@ DISTAR_PHASE_CAT = {
 						AND = {
 							exists = space_owner
 							space_owner = {
-								NOT = { is_same_value = root.owner }
+								NOT = { is_same_empire = root.owner }
 							}
 						}
 					}
@@ -861,7 +861,7 @@ DISTAR_PHASE_CAT = {
 					has_modifier = phaseshifted
 					exists = space_owner
 					space_owner = {
-						is_same_value = root.owner
+						is_same_empire = root.owner
 					}
 				}
 			}
@@ -1195,10 +1195,10 @@ ast_debris_field_1_cat_2 = {
 			modifier = {
 				factor = 0
 				NOT = {	# rewrite event's trigger block here
-					any_country = {
+					any_playable_country = {
 						is_country_type = default
 						NOR = {
-							is_same_value = prev.owner
+							is_same_empire = prev.owner
 							has_communications = root.owner
 							has_country_flag = lost_colony_parent
 							has_authority = auth_machine_intelligence
@@ -1627,8 +1627,7 @@ disco_impossible_organism_cat = {
 			factor = 0
 			from.owner = {
 				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_civic = civic_machine_terminator
 					has_authority = auth_hive_mind
 				}

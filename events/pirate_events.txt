@@ -629,7 +629,7 @@ fleet_event = {
 	mean_time_to_happen = { months = 600 }
 
 	immediate = {
-		random_country = {
+		random_playable_country = {
 			limit = {
 				is_country_type = default
 				fleet_power > 1800 # at least slightly more than the raiding party

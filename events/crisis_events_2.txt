@@ -120,10 +120,8 @@ country_event = {
 			limit = {
 				NOT = {
 					any_country = {
-						OR = {
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
-						}
+						
+							is_fallen_empire = yes
 						any_system_within_border = {
 							is_same_value = prev
 						}
@@ -329,8 +327,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 				intel_level = {
 					level = high
@@ -343,8 +340,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 				NOT = {
 					intel_level = {
@@ -931,7 +927,7 @@ planet_event = {
 		}
 		if = {
 			limit = { FROM = { is_country_type = extradimensional } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -942,7 +938,7 @@ planet_event = {
 		}
 		else_if = {
 			limit = { FROM = { is_country_type = extradimensional_2 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -953,7 +949,7 @@ planet_event = {
 		}
 		else_if = {
 			limit = { FROM = { is_country_type = extradimensional_3 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"
@@ -982,7 +978,7 @@ planet_event = {
 				}
 				random_ship_in_system = {
 					limit = {
-						owner = { is_same_value = from }
+						is_owned_by = from
 					}
 					ship_event = { id = crisis.1300 } # Check if starbase should be Anchor
 					ship_event = { id = crisis.1310 } # Create system effect
@@ -1194,10 +1190,7 @@ country_event = {
 	option = {
 		name = crisis.1050.b
 		trigger = {
-			OR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-			}
+			is_pacifist = yes
 		}
 		response_text = crisis.1050.b.response
 	}
@@ -1205,8 +1198,7 @@ country_event = {
 		name = crisis.1050.c
 		trigger = {
 			OR = {
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"
+				is_militarist = yes
 				has_authority = auth_machine_intelligence
 			}
 		}
@@ -1215,20 +1207,14 @@ country_event = {
 	option = {
 		name = crisis.1050.d
 		trigger = {
-			OR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
+			is_xenophobe = yes
 		}
 		response_text = crisis.1050.d.response
 	}
 	option = {
 		name = crisis.1050.e
 		trigger = {
-			OR = {
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"
-			}
+			is_xenophile = yes
 			NOT = { owner_species = { has_trait = trait_mechanical } }
 		}
 		response_text = crisis.1050.e.response
@@ -1236,10 +1222,7 @@ country_event = {
 	option = {
 		name = crisis.1050.f
 		trigger = {
-			OR = {
-				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"
-			}
+			is_spiritualist = yes
 			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.1050.f.response
@@ -1568,8 +1551,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 			country_event = { id = crisis.1110 days = 1 }
@@ -1765,7 +1747,7 @@ country_event = {
 
 	immediate = {
 		set_global_flag = extradimensionals_fight
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_country_type = default
 			}
@@ -1840,7 +1822,7 @@ country_event = {
 				has_global_flag = extradimensional_third_portal_destroyed
 			}
 			stop_crisis_sound = yes
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 				}
@@ -1853,7 +1835,7 @@ country_event = {
 				}
 				country_event = { id = crisis.1250 days = 10 random = 10 }
 			}
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 					has_communications = FROM
@@ -1863,7 +1845,7 @@ country_event = {
 					modifier = opinion_destroyed_portal
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { is_country_type = default }
 				add_modifier = {
 					modifier = "extradimensionals_defeated"
@@ -1872,7 +1854,7 @@ country_event = {
 			}
 		}
 		else = {
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 				}
@@ -2180,8 +2162,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 			country_event = { id = crisis.1210 days = 1 }
@@ -2400,7 +2381,7 @@ country_event = {
 				has_global_flag = extradimensional_second_portal_destroyed
 			}
 			stop_crisis_sound = yes
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 				}
@@ -2413,7 +2394,7 @@ country_event = {
 				}
 				country_event = { id = crisis.1250 days = 10 random = 10 }
 			}
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 					has_communications = FROM
@@ -2423,7 +2404,7 @@ country_event = {
 					modifier = opinion_destroyed_portal
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { is_country_type = default }
 				add_modifier = {
 					modifier = "extradimensionals_defeated"
@@ -2432,7 +2413,7 @@ country_event = {
 			}
 		}
 		else = {
-			every_country = {
+			every_playable_country = {
 				limit = {
 					is_country_type = default
 				}
@@ -2532,8 +2513,10 @@ event = {
 					OR = {
 						AND = {
 							has_global_flag = extradimensional_first_portal_destroyed
-							NOT = { has_global_flag = extradimensional_second_portal }
-							NOT = { has_global_flag = extradimensional_third_portal }
+							NOR = {
+								has_global_flag = extradimensional_second_portal
+								has_global_flag = extradimensional_third_portal
+							}
 						}
 						AND = {
 							has_global_flag = extradimensional_first_portal_destroyed
@@ -3643,7 +3626,7 @@ ship_event = {
 		}
 		if = {
 			limit = { owner = { is_country_type = extradimensional } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -3654,7 +3637,7 @@ ship_event = {
 		}
 		else_if = {
 			limit = { owner = { is_country_type = extradimensional_2 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -3665,7 +3648,7 @@ ship_event = {
 		}
 		else_if = {
 			limit = { owner = { is_country_type = extradimensional_3 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"
@@ -3748,7 +3731,7 @@ country_event = {
 		}
 		if = {
 			limit = { is_country_type = extradimensional }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -3759,7 +3742,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_2 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -3770,7 +3753,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_3 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"
@@ -3839,7 +3822,7 @@ country_event = {
 		}
 		if = {
 			limit = { is_country_type = extradimensional }
-			every_country = {
+			every_playable_country = {
 				limit = {
 					has_event_chain = "extradimensional_invasion_chain"
 					NOT = { is_same_value = FROM }
@@ -3853,7 +3836,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_2 }
-			every_country = {
+			every_playable_country = {
 				limit = {
 					has_event_chain = "extradimensional_invasion_chain_2"
 					NOT = { is_same_value = FROM }
@@ -3867,7 +3850,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_3 }
-			every_country = {
+			every_playable_country = {
 				limit = {
 					has_event_chain = "extradimensional_invasion_chain_3"
 					NOT = { is_same_value = FROM }
@@ -3907,7 +3890,7 @@ country_event = {
 	immediate = {
 		if = {
 			limit = { is_country_type = extradimensional }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -3918,7 +3901,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_2 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -3929,7 +3912,7 @@ country_event = {
 		}
 		else_if = {
 			limit = { is_country_type = extradimensional_3 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"

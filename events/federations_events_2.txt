@@ -60,10 +60,7 @@ ship_event = {
 		name = federations2.1.A
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = no
 			}
 		}
 		owner = {
@@ -77,10 +74,7 @@ ship_event = {
 		name = federations2.1.B
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		if = {
@@ -117,10 +111,7 @@ ship_event = {
 		name = federations2.1.C
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 		}
 		owner = {
@@ -136,10 +127,7 @@ ship_event = {
 		name = federations2.1.D
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = yes
 			}
 		}
 		owner = {
@@ -252,10 +240,7 @@ fleet_event = {
 		name = federations2.4.A
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 			}
 		}
 		small_artifact_reward = yes
@@ -264,10 +249,7 @@ fleet_event = {
 		name = federations2.4.B
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 		small_artifact_reward = yes
@@ -286,10 +268,8 @@ fleet_event = {
 		if = {
 			limit = {
 				any_country = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 					has_ethic = ethic_fanatic_xenophobe
 					has_communications = root.owner
 				}
@@ -299,10 +279,8 @@ fleet_event = {
 				4 = {
 					random_country = {
 						limit = {
-							OR = {
-								is_country_type = fallen_empire
-								is_country_type = awakened_fallen_empire
-							}
+							
+								is_fallen_empire = yes
 							has_ethic = ethic_fanatic_xenophobe
 						}
 						save_event_target_as = fanatic_xenophobe_fe
@@ -352,8 +330,7 @@ fleet_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
+					is_militarist = yes
 					has_civic = civic_fanatic_purifiers
 					has_authority = auth_machine_intelligence
 					has_civic = civic_hive_devouring_swarm
@@ -366,8 +343,7 @@ fleet_event = {
 		trigger = {
 			owner = {
 				OR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
+					is_militarist = yes
 					has_civic = civic_fanatic_purifiers
 				}
 			}
@@ -418,8 +394,7 @@ fleet_event = {
 	desc = {
 		trigger = {
 			owner = {
-				NOT = { has_authority = auth_machine_intelligence }
-				NOT = { has_country_flag = synthetic_empire }
+				is_synthetic_empire = no
 			}
 		}
 		text = federations2.7.desc
@@ -500,8 +475,7 @@ fleet_event = {
 			}
 			if = {
 				limit = {
-					NOT = { has_authority = auth_machine_intelligence }
-					NOT = { has_country_flag = synthetic_empire }
+					is_synthetic_empire = no
 				}
 				give_next_ai_tech_option_effect = yes
 			}
@@ -648,16 +622,17 @@ planet_event = {
 	trigger = {
 		owner = {
 			is_country_type = default
-			NOT = { has_ethic = ethic_gestalt_consciousness }
-			NOT = { has_country_flag = dancing_fever_colony_event }
+			NOR = {
+				has_ethic = ethic_gestalt_consciousness
+				has_country_flag = dancing_fever_colony_event
+			}
 		}
 		any_owned_pop = {
 			is_same_species = root.owner
 		}
 		NOR = {
 			has_planet_flag = colony_event
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
+			is_artificial = yes
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_relic
 			is_planet_class = pc_city
@@ -937,10 +912,14 @@ country_event = {
 					}
 					else = {
 						any_owned_fleet = {
-							NOT = { is_ship_class = shipclass_military_station }
-							NOT = { is_ship_class = shipclass_mining_station }
-							NOT = { is_ship_class = shipclass_research_station }
-							NOT = { is_ship_class = shipclass_observation_station }
+							NOR = {
+								is_ship_class = shipclass_military_station
+								is_ship_class = shipclass_mining_station
+							}
+							NOR = {
+								is_ship_class = shipclass_research_station
+								is_ship_class = shipclass_observation_station
+							}
 							is_inside_border = owner
 							can_access_system = root.capital_scope.solar_system
 						}
@@ -1051,10 +1030,14 @@ country_event = {
 						}
 						else = {
 							any_owned_fleet = {
-								NOT = { is_ship_class = shipclass_military_station }
-								NOT = { is_ship_class = shipclass_mining_station }
-								NOT = { is_ship_class = shipclass_research_station }
-								NOT = { is_ship_class = shipclass_observation_station }
+								NOR = {
+									is_ship_class = shipclass_military_station
+									is_ship_class = shipclass_mining_station
+								}
+								NOR = {
+									is_ship_class = shipclass_research_station
+									is_ship_class = shipclass_observation_station
+								}
 								is_inside_border = owner
 								can_access_system = root.capital_scope.solar_system
 							}

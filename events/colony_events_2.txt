@@ -563,8 +563,7 @@ planet_event = {
 			has_global_flag = pheromonefrenzy_done_global
 			has_planet_flag = colony_event
 			has_planet_flag = pheromone_planet
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_habitat
+			is_artificial = yes
 			is_planet_class = pc_arid
 			is_planet_class = pc_desert
 			is_planet_class = pc_savannah
@@ -1300,10 +1299,7 @@ planet_event = {
 		custom_tooltip = colony.2001.a.pacifist.tooltip
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_militarist
-					has_ethic = ethic_fanatic_militarist
-				}
+				is_militarist = yes
 			}
 		}
 		hidden_effect = {
@@ -1347,10 +1343,7 @@ planet_event = {
 		custom_tooltip = colony.2001.a.military.tooltip
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 		hidden_effect = {
@@ -1540,10 +1533,7 @@ planet_event = {
 		name = colony.2005.a
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_fanatic_materialist
-					has_ethic = ethic_materialist
-				}
+				is_materialist = no
 			}
 		}
 		enable_special_project = {
@@ -1617,10 +1607,7 @@ planet_event = {
 		name = colony.2005.b
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_spiritualist
-				}
+				is_spiritualist = no
 				NOT = { has_technology = tech_destroyers }
 			}
 		}
@@ -1647,10 +1634,7 @@ planet_event = {
 		name = colony.2005.b
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_spiritualist
-				}
+				is_spiritualist = no
 				has_technology = tech_destroyers
 				NOT = { has_technology = tech_cruisers }
 			}
@@ -2472,10 +2456,7 @@ planet_event = {
 		custom_tooltip = colony.2012.a.material.tooltip
 		trigger = {
 			owner = {
-				NOR = {
-					has_ethic = ethic_fanatic_spiritualist
-					has_ethic = ethic_spiritualist
-				}
+				is_spiritualist = no
 			}
 		}
 	}
@@ -2510,8 +2491,7 @@ planet_event = {
 		num_pops > 0
 		NOR = {
 			has_planet_flag = colony_event
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_habitat
+			is_artificial = yes
 			is_planet_class = pc_relic
 			is_planet_class = pc_city
 		}
@@ -2951,8 +2931,7 @@ planet_event = {
 				limit = {
 					OR = {
 						NOT = { is_same_species = owner }
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_fanatic_xenophile
+						is_xenophile = yes
 					}
 				}
 				add_modifier = {
@@ -2985,8 +2964,7 @@ planet_event = {
 				limit = {
 					OR = {
 						NOT = { is_same_species = owner }
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_fanatic_xenophile
+						is_xenophile = yes
 					}
 				}
 				add_modifier = {
@@ -3019,8 +2997,7 @@ planet_event = {
 				limit = {
 					OR = {
 						NOT = { is_same_species = owner }
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_fanatic_xenophile
+						is_xenophile = yes
 					}
 				}
 				add_modifier = {

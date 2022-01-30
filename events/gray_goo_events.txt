@@ -1886,7 +1886,7 @@ country_event = {
 	trigger = {
 		event_target:lcluster_factory_system = {
 			any_fleet_in_system = {
-				owner = { is_same_value = root }
+				is_owned_by = root
 			}
 		}
 		event_target:lcluster_factory_system = {

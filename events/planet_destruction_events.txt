@@ -77,7 +77,7 @@ planet_event = {
 				exists = owner
 				owner = { is_country_type = swarm }
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "prethoryn_scourge_chain" }
 				add_event_chain_counter = {
 					event_chain = "prethoryn_scourge_chain"
@@ -115,11 +115,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -133,8 +132,8 @@ planet_event = {
 				every_country = {
 					limit = {
 						NOR = {
-							is_same_value = from.owner
-							is_same_value = root.owner
+							is_same_empire = from.owner
+							is_same_empire = root.owner
 							AND = {
 								has_federation = yes
 								is_in_federation_with = from.owner
@@ -208,7 +207,7 @@ planet_event = {
 				# modifier for allies + those upset by genocide
 				every_country = {
 					limit = {
-						NOT = { is_same_value = from.owner }
+						NOT = { is_same_empire = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -232,7 +231,7 @@ planet_event = {
 				}
 				every_country = {
 					limit = {
-						NOT = { is_same_value = from.owner }
+						NOT = { is_same_empire = from.owner }
 						OR = {
 							has_communications = from.owner
 							has_communications = root.owner
@@ -331,10 +330,7 @@ country_event = {
 	trigger = {
 		NOT = { has_country_flag = fired_cracker }
 		FROM = {
-			NOR = {
-				is_planet_class = pc_habitat
-				is_planet_class = pc_ringworld_habitable
-			}
+			is_artificial = no
 		}
 	}
 
@@ -504,7 +500,7 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { NOT = { is_same_value = from.owner } }
+				owner = { NOT = { is_same_empire = from.owner } }
 				NOT = { is_planet_class = pc_ai }
 			}
 			from.owner = {
@@ -552,7 +548,7 @@ planet_event = {
 				exists = owner
 				owner = { is_country_type = swarm }
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "prethoryn_scourge_chain" }
 				add_event_chain_counter = {
 					event_chain = "prethoryn_scourge_chain"
@@ -571,11 +567,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -585,8 +580,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_value = from.owner
-						is_same_value = root.owner
+						is_same_empire = from.owner
+						is_same_empire = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -764,7 +759,7 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { NOT = { is_same_value = from.owner } }
+				owner = { NOT = { is_same_empire = from.owner } }
 			}
 			from.owner = {
 				country_event = { id = planet_destruction.301 }
@@ -787,7 +782,7 @@ planet_event = {
 				exists = owner
 				owner = { is_country_type = swarm }
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "prethoryn_scourge_chain" }
 				add_event_chain_counter = {
 					event_chain = "prethoryn_scourge_chain"
@@ -819,11 +814,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -833,8 +827,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_value = from.owner
-						is_same_value = root.owner
+						is_same_empire = from.owner
+						is_same_empire = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -888,7 +882,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_country = {
 				limit = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -907,7 +901,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -968,8 +962,7 @@ planet_event = {
 		if = {
 			limit = {
 				OR = {
-					is_planet_class = pc_habitat
-					is_planet_class = pc_ringworld_habitable
+					is_artificial = yes
 				}
 			}
 			# nothing
@@ -996,13 +989,11 @@ country_event = {
 		text = planet_destruction.301.nobots.desc
 		trigger = {
 			from = {
-				NOT = {
-					OR = {
+				NOR = {
 						is_planet_class = pc_infested
 						is_planet_class = pc_barren
 						is_planet_class = pc_barren_cold
-					}
-				}
+}
 				count_owned_pop = {
 					count < 1
 				}
@@ -1085,7 +1076,7 @@ planet_event = {
 			limit = {
 				NOT = { is_planet_class = pc_ai }
 				exists = owner
-				owner = { NOT = { is_same_value = from.owner } }
+				owner = { NOT = { is_same_empire = from.owner } }
 			}
 			from.owner = {
 				country_event = { id = planet_destruction.401 }
@@ -1162,11 +1153,10 @@ planet_event = {
 				NOT = { is_planet_class = pc_ai }
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -1176,8 +1166,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_value = from.owner
-						is_same_value = root.owner
+						is_same_empire = from.owner
+						is_same_empire = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1288,8 +1278,7 @@ planet_event = {
 		if = {
 			limit = {
 				OR = {
-					is_planet_class = pc_habitat
-					is_planet_class = pc_ringworld_habitable
+					is_artificial = yes
 				}
 			}
 			# nothing
@@ -1305,7 +1294,7 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { is_same_value = from.owner }
+				is_owned_by = from.owner
 			}
 			add_modifier = {
 				modifier = uneasy_faith
@@ -1368,11 +1357,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -1382,8 +1370,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_value = from.owner
-						is_same_value = root.owner
+						is_same_empire = from.owner
+						is_same_empire = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1436,7 +1424,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_country = {
 				limit = {
-					NOR = { is_same_value = from.owner }
+					NOR = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1455,7 +1443,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOR = { is_same_value = from.owner }
+					NOR = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1490,7 +1478,7 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { is_same_value = from.owner }
+				is_owned_by = from.owner
 			}
 			# already owned
 		}
@@ -1546,8 +1534,7 @@ planet_event = {
 		if = {
 			limit = {
 				OR = {
-					is_planet_class = pc_habitat
-					is_planet_class = pc_ringworld_habitable
+					is_artificial = yes
 				}
 			}
 			# nothing
@@ -1571,10 +1558,7 @@ country_event = {
 	trigger = {
 		NOT = { has_country_flag = fired_nanobots }
 		FROM = {
-			NOR = {
-				is_planet_class = pc_habitat
-				is_planet_class = pc_ringworld_habitable
-			}
+			is_artificial = no
 		}
 	}
 
@@ -1652,10 +1636,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.spiri
 		trigger = {
-			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = yes
 			#is_spiritualist = yes
 		}
 	}
@@ -1663,10 +1644,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.mater
 		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			is_materialist = yes
 			#is_materialist = yes
 		}
 	}
@@ -1674,10 +1652,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.milit
 		trigger = {
-			OR = {
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-			}
+			is_militarist = yes
 			#is_militarist = yes
 		}
 	}
@@ -1685,10 +1660,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.pacif
 		trigger = {
-			OR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = yes
 			#is_pacifist = yes
 		}
 	}
@@ -1696,10 +1668,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.autho
 		trigger = {
-			OR = {
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
-			}
+			is_authoritarian = yes
 			#is_authoritarian = yes
 		}
 	}
@@ -1707,10 +1676,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.egali
 		trigger = {
-			OR = {
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-			}
+			is_egalitarian = yes
 			#is_egalitarian = yes
 		}
 	}
@@ -1718,10 +1684,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.phile
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 			#is_xenophile = yes
 		}
 	}
@@ -1729,10 +1692,7 @@ country_event = {
 	option = {
 		name = planet_destruction.610.phobe
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 			#is_xenophobe = yes
 		}
 	}
@@ -1798,7 +1758,7 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 				}
 				OR = {
 					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
@@ -1814,11 +1774,11 @@ planet_event = {
 			limit = {
 				exists = space_owner
 				space_owner = {
-					is_same_value = from.owner
+					is_same_empire = from.owner
 				}
 				OR = {
 					NOT = { exists = owner }
-					owner = { is_same_value = from.owner }
+					is_owned_by = from.owner
 				}
 				OR = {
 					is_active_resolution = "resolution_ecology_environmental_control_board"
@@ -1834,11 +1794,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 					OR = {
 						is_country_type = default
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
+						is_fallen_empire = yes
 					}
 				}
 			}
@@ -1848,8 +1807,8 @@ planet_event = {
 			every_country = {
 				limit = {
 					NOR = {
-						is_same_value = from.owner
-						is_same_value = root.owner
+						is_same_empire = from.owner
+						is_same_empire = root.owner
 						AND = {
 							has_federation = yes
 							is_in_federation_with = from.owner
@@ -1888,7 +1847,7 @@ planet_event = {
 			# modifier for allies + those upset by genocide
 			every_country = {
 				limit = {
-					NOR = { is_same_value = from.owner }
+					NOR = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1907,7 +1866,7 @@ planet_event = {
 			}
 			every_country = {
 				limit = {
-					NOR = { is_same_value = from.owner }
+					NOR = { is_same_empire = from.owner }
 					OR = {
 						has_communications = from.owner
 						has_communications = root.owner
@@ -1930,7 +1889,7 @@ planet_event = {
 		if = {
 			limit = {
 				exists = owner
-				owner = { NOT = { is_same_value = from.owner } }
+				owner = { NOT = { is_same_empire = from.owner } }
 			}
 			owner = {
 				if = {
@@ -1965,7 +1924,7 @@ planet_event = {
 					exists = this
 				}
 				owner = {
-					NOT = { is_same_value = from.owner }
+					NOT = { is_same_empire = from.owner }
 				}
 			}
 			set_owner = from.owner
@@ -2082,13 +2041,13 @@ country_event = {
 	title = planet_destruction.1000.name
 	desc = {
 		trigger = {
-			is_same_value = fromfrom.owner
+			is_same_empire = fromfrom.owner
 		}
 		text = planet_destruction.1000.desc.self
 	}
 	desc = {
 		trigger = {
-			NOT = { is_same_value = fromfrom.owner }
+			NOT = { is_same_empire = fromfrom.owner }
 			from = {
 				OR = {
 					is_planet_class = pc_shattered
@@ -2100,7 +2059,7 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { is_same_value = fromfrom.owner }
+			NOT = { is_same_empire = fromfrom.owner }
 			from = {
 				OR = {
 					is_planet_class = pc_shielded
@@ -2113,7 +2072,7 @@ country_event = {
 	}
 	desc = {
 		trigger = {
-			NOT = { is_same_value = fromfrom.owner }
+			NOT = { is_same_empire = fromfrom.owner }
 			from = {
 				NOR = {
 					is_planet_class = pc_shattered
@@ -2160,8 +2119,7 @@ country_event = {
 			OR = {
 				NOR = {
 					is_homicidal = yes
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 				}
 				NOT = {
 					from = {
@@ -2184,8 +2142,7 @@ country_event = {
 		trigger = {
 			OR = {
 				is_homicidal = yes
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 			from = {
 				OR = {

@@ -55,8 +55,7 @@ country_event = {
 			limit = {
 				OR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 				NOT = { has_communications = root }
 			}
@@ -67,7 +66,7 @@ country_event = {
 		root = { save_event_target_as = awakened_machine_empire }
 
 		# Notify players
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 			}
@@ -172,7 +171,7 @@ country_event = {
 		}
 
 		# Notify players
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 			}
@@ -288,19 +287,13 @@ country_event = {
 
 		if = {
 			limit = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 			add_modifier = { modifier = machine_empire_inoculations_xenophobe days = -1 }
 		}
 		if = {
 			limit = {
-				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = no
 			}
 			add_modifier = { modifier = machine_empire_inoculations days = -1 }
 		}
@@ -310,10 +303,7 @@ country_event = {
 	option = {
 		name = fallen_machine_empire.11.b
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 		}
 		ai_chance = {
 			factor = 10
@@ -324,10 +314,7 @@ country_event = {
 	option = {
 		name = fallen_machine_empire.11.c
 		trigger = {
-			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		ai_chance = {
 			factor = 10
@@ -736,13 +723,13 @@ country_event = {
 		is_country_type = default
 		is_subject = no
 		NOR = {
-			has_valid_civic = civic_machine_terminator
-			has_valid_civic = civic_hive_devouring_swarm
-			has_valid_civic = civic_fanatic_purifiers
+			is_homicidal = yes
+			has_authority = auth_machine_intelligence
 		}
-		NOT = { has_authority = auth_machine_intelligence }
-		NOT = { has_country_flag = fe_task_given }
-		NOT = { has_global_flag = fe_task_attack_empire_active }
+		NOR = {
+			has_country_flag = fe_task_given
+			has_global_flag = fe_task_attack_empire_active
+		}
 		is_at_war = no
 
 		NOT = { has_policy_flag = no_wars }
@@ -758,7 +745,7 @@ country_event = {
 				has_opinion_modifier = { who = prev modifier = opinion_failed_fallen_empire_task }
 			}
 
-			any_country = {
+			any_playable_country = {
 				is_country_type = default
 				root = { is_rival = prev }
 				OR = {
@@ -785,7 +772,7 @@ country_event = {
 					has_opinion_modifier = { who = prev modifier = opinion_failed_fallen_empire_task }
 				}
 
-				any_country = {
+				any_playable_country = {
 					is_country_type = default
 					root = { is_rival = prev }
 					OR = {
@@ -1044,13 +1031,13 @@ country_event = {
 		is_country_type = default
 		is_subject = no
 		NOR = {
-			has_valid_civic = civic_machine_terminator
-			has_valid_civic = civic_hive_devouring_swarm
-			has_valid_civic = civic_fanatic_purifiers
+			is_homicidal = yes
+			has_authority = auth_machine_intelligence
 		}
-		NOT = { has_authority = auth_machine_intelligence }
-		NOT = { has_country_flag = fe_task_given }
-		NOT = { has_global_flag = fe_task_colonize_planet_active }
+		NOR = {
+			has_country_flag = fe_task_given
+			has_global_flag = fe_task_colonize_planet_active
+		}
 		is_at_war = no
 
 		any_country = {
@@ -1371,11 +1358,7 @@ country_event = {
 
 		modifier = {
 			factor = 3.0
-			OR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = yes
 		}
 
 		modifier = {
@@ -1648,11 +1631,7 @@ country_event = {
 
 		modifier = {
 			factor = 3.0
-			OR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = yes
 		}
 
 		modifier = {

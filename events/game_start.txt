@@ -9,7 +9,7 @@ event = {
 	immediate = {
 		set_global_flag = game_started
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = country.900 days = 460 random = 60 }
 		}
@@ -351,7 +351,7 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = tutorial.104 }
 		}
@@ -365,7 +365,7 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			random_list = {
 				#1 = { country_event = { id = nomad.1 days = 1 } } # DEBUG
@@ -1329,8 +1329,10 @@ country_event = {
 		if = {
 			limit = {
 				has_origin = origin_necrophage
-				NOT = { has_civic = civic_fanatic_purifiers }
-				NOT = { has_ai_personality_behaviour = purger }
+				NOR = {
+					has_civic = civic_fanatic_purifiers
+					has_ai_personality_behaviour = purger
+				}
 			}
 			country_event = { id = necroids.2 days = 3420 } #tell them about the necrophage mechanic
 		}

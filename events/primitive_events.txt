@@ -313,10 +313,7 @@ country_event = {
 			AND = {
 				exists = from
 				from = {
-					OR = {
-						is_country_type = default
-						is_country_type = awakened_fallen_empire
-					}
+					is_country_type_with_subjects = yes
 				}
 			}
 			AND = {
@@ -507,7 +504,7 @@ country_event = {
 				else_if = {
 					limit = {
 						starbase = {
-							NOT = { owner = { is_same_empire = root } }
+							NOT = { is_owned_by = root }
 						}
 					}
 					starbase = {
@@ -544,11 +541,7 @@ country_event = {
 	option = {
 		name = primitive.180.a # Cede
 		trigger = {
-			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = no
 		}
 		ai_chance = {
 			factor = 10
@@ -586,7 +579,7 @@ country_event = {
 					every_system_planet = {
 						limit = {
 							exists = owner
-							owner = { is_same_empire = root }
+							is_owned_by = root
 						}
 						set_owner = root.from			
 					}
@@ -598,11 +591,7 @@ country_event = {
 	option = {
 		name = primitive.180.b # Don't cede
 		trigger = {
-			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
+			is_homicidal = no
 		}
 		ai_chance = {
 			factor = 10
@@ -1204,8 +1193,7 @@ planet_event = {
 							factor = 0 # won't turn planet uninhabitable if it's not a planet
 							root = {
 								OR = {
-									is_planet_class = pc_ringworld_habitable
-									is_planet_class = pc_habitat
+									is_artificial = yes
 								}
 							}
 						}
@@ -1223,8 +1211,7 @@ planet_event = {
 							factor = 0 # won't turn planet uninhabitable if it's not a planet
 							root = {
 								OR = {
-									is_planet_class = pc_ringworld_habitable
-									is_planet_class = pc_habitat
+									is_artificial = yes
 								}
 							}
 						}

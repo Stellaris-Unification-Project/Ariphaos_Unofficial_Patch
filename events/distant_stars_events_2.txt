@@ -843,8 +843,7 @@ country_event = { #A primitive planet is nuked
 		exclusive_trigger = {
 			OR = {
 				has_ai_personality = exterminators
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 		}
 	}
@@ -854,10 +853,7 @@ country_event = { #A primitive planet is nuked
 	option = {
 		name = distar.330.a.phile
 		exclusive_trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 		}
 	}
 }
@@ -2225,8 +2221,7 @@ country_event = {
 				is_species_class = MOL
 			}
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 		}
 		event_target:star_lifting_star = {
@@ -2284,8 +2279,7 @@ country_event = {
 		name = distar.1031.a
 		exclusive_trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 		}
 		hidden_effect = {
@@ -2443,7 +2437,7 @@ ship_event = {
 		any_playable_country = {
 			is_country_type = default
 			NOT = {
-				is_same_value = root.owner
+				is_same_empire = root.owner
 			}
 		}
 	}
@@ -2455,7 +2449,7 @@ ship_event = {
 		random_playable_country = {
 			limit = {
 				NOR = {
-					is_same_value = root.owner
+					is_same_empire = root.owner
 					has_country_flag = lost_colony_parent
 					has_authority = auth_machine_intelligence
 					is_synthetic_empire = yes
@@ -2587,10 +2581,7 @@ ship_event = {
 		name = distar.1060.a
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
+				is_xenophile = yes
 			}
 		}
 		owner = {
@@ -2610,10 +2601,7 @@ ship_event = {
 		name = distar.1060.b
 		trigger = {
 			owner = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
+				is_xenophobe = yes
 			}
 		}
 		owner = {
@@ -2635,10 +2623,8 @@ ship_event = {
 			hidden_trigger = {
 				owner = {
 					OR = {
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_fanatic_xenophile
-						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xenophobe
+						is_xenophile = yes
+						is_xenophobe = yes
 					}
 				}
 			}
@@ -2657,10 +2643,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophile = yes
+					is_xenophobe = yes
 				}
 			}
 		}
@@ -2678,10 +2662,8 @@ ship_event = {
 		trigger = {
 			owner = {
 				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophile = yes
+					is_xenophobe = yes
 				}
 			}
 		}
@@ -3862,10 +3844,7 @@ ship_event = {
 		if = {
 			limit = {
 				owner = {
-					OR = {
-						has_ethic = ethic_materialist
-						has_ethic = ethic_fanatic_materialist
-					}
+					is_materialist = yes
 				}
 			}
 			#custom_tooltip = distar.2030.a.tooltip.mat
@@ -3873,10 +3852,7 @@ ship_event = {
 		else_if = {
 			limit = {
 				owner = {
-					NOR = {
-						has_ethic = ethic_materialist
-						has_ethic = ethic_fanatic_materialist
-					}
+					is_materialist = no
 				}
 			}
 			custom_tooltip = distar.2030.a.tooltip
@@ -5364,7 +5340,7 @@ planet_event = {
 		NOT = {
 			any_fleet_in_orbit = {
 				exists = owner
-				owner = { is_same_value = event_target:enigmatic_cache_country }
+				is_owned_by = event_target:enigmatic_cache_country
 			}
 		}
 	}
@@ -5381,7 +5357,7 @@ planet_event = {
 				NOT = {
 					any_fleet_in_orbit = {
 						exists = owner
-						owner = { is_same_value = event_target:enigmatic_cache_country }
+						is_owned_by = event_target:enigmatic_cache_country
 					}
 				}
 			}
@@ -6800,7 +6776,7 @@ country_event = {
 			is_capital = yes
 			any_fleet_in_orbit = {
 				exists = owner
-				owner = { is_same_value = event_target:enigmatic_cache_country }
+				is_owned_by = event_target:enigmatic_cache_country
 			}
 		}
 	}
@@ -6873,7 +6849,7 @@ ship_event = {
 						NOT = { has_star_flag = guardian }
 						OR = {
 							has_owner = no
-							owner = { is_same_value = root.owner }
+							is_owned_by = root.owner
 						}
 						any_system_planet = {
 							is_asteroid = yes
@@ -7102,7 +7078,7 @@ ship_event = {
 							AND = {
 								exists = starbase
 								starbase.owner = {
-									is_same_value = root.owner
+									is_same_empire = root.owner
 								}
 							}
 						}
@@ -7287,10 +7263,7 @@ country_event = { # Organism growing fast
 	option = { # Amazing. Proceed.
 		name = distar.3011.a
 		trigger = {
-			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		enable_special_project = {
 			name = "impossible_organism_project_2"
@@ -7303,8 +7276,7 @@ country_event = { # Organism growing fast
 		name = distar.3011.a.phobe
 		trigger = {
 			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
+				is_xenophobe = yes
 			}
 		}
 		enable_special_project = {
@@ -7419,10 +7391,7 @@ country_event = { # First words
 
 	option = { # Astonishing. Every species-X should have one!
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 		}
 
 		allow = {
@@ -7451,8 +7420,7 @@ country_event = { # First words
 	option = { # Excellent. Species-X society could use them.
 		trigger = {
 			NOR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
+				is_xenophile = yes
 				has_ethic = ethic_gestalt_consciousness
 			}
 		}

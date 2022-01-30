@@ -156,13 +156,17 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		is_homicidal = no
-		NOT = { has_ethic = ethic_fanatic_xenophobe }
-		NOT = { has_valid_civic = civic_inwards_perfection }
+		NOR = {
+			has_ethic = ethic_fanatic_xenophobe
+			has_valid_civic = civic_inwards_perfection
+		}
 		any_relation = {
 			is_country_type = default
 			is_homicidal = no
-			NOT = { has_country_flag = starting_event }
-			NOT = { has_valid_civic = civic_inwards_perfection }
+			NOR = {
+				has_country_flag = starting_event
+				has_valid_civic = civic_inwards_perfection
+			}
 			NOT = { is_country = ROOT }
 			has_communications = ROOT
 			OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)
@@ -188,8 +192,10 @@ country_event = {
 			limit = {
 				is_country_type = default
 				is_homicidal = no
-				NOT = { has_country_flag = starting_event }
-				NOT = { has_valid_civic = civic_inwards_perfection }
+				NOR = {
+					has_country_flag = starting_event
+					has_valid_civic = civic_inwards_perfection
+				}
 				NOT = { is_country = ROOT }
 				has_communications = ROOT
 				OR = { # stops Scions spreading knowledge across the galaxy quite so much (FE can be anywhere, if you establish comms with the FE then you get them with the Scion, then you soon find out about the whole opposite side of the galaxy)

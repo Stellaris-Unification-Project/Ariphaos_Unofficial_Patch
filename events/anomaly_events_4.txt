@@ -126,7 +126,7 @@ country_event = {
 			limit = {
 				OR = {
 					has_owner = no
-					owner = { is_same_empire = root }
+					is_owned_by = root
 					NOT = { has_star_flag = guardian }
 				}
 				any_system_planet = {
@@ -300,7 +300,7 @@ country_event = {
 				limit = {
 					OR = {
 						has_owner = no
-						owner = { is_same_empire = root }
+						is_owned_by = root
 					}
 					any_system_planet = {
 						is_planet_class = pc_gas_giant

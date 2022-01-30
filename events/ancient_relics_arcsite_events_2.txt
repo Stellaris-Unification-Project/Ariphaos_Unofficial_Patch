@@ -577,10 +577,8 @@ event = {
 		has_ancrel = yes
 		NOT = { has_global_flag = zarqlan_spawned }
 		any_country = {
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			}
+			
+				is_fallen_empire = yes
 			has_country_flag = fallen_empire_2
 			any_playable_country = {
 				is_ai = no
@@ -597,10 +595,8 @@ event = {
 				set_global_flag = zarqlan_spawned
 				random_country = {
 					limit = {
-						OR = {
-							is_country_type = fallen_empire
-							is_country_type = awakened_fallen_empire
-						}
+						
+							is_fallen_empire = yes
 						has_country_flag = fallen_empire_2
 					}
 					save_event_target_as = spiritualist_fallen_empire
@@ -835,10 +831,8 @@ country_event = {
 
 	trigger = {
 		any_country = {
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			}
+			
+				is_fallen_empire = yes
 			has_country_flag = fallen_empire_2
 			has_communications = root
 		}
@@ -847,10 +841,8 @@ country_event = {
 	immediate = {
 		random_country = {
 			limit = {
-				OR = {
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
-				}
+				
+					is_fallen_empire = yes
 				has_country_flag = fallen_empire_2
 			}
 			save_event_target_as = spiritualist_fallen_empire
@@ -880,19 +872,15 @@ country_event = {
 		if = {
 			limit = {
 				any_country = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 					has_country_flag = fallen_empire_2
 				}
 			}
 			random_country = {
 				limit = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
+					
+						is_fallen_empire = yes
 					has_country_flag = fallen_empire_2
 				}
 				save_event_target_as = spiritualist_fallen_empire
@@ -2664,7 +2652,7 @@ fleet_event = {
 	}
 }
 
-### Archaeology: Déjà Vu Dig
+### Archaeology: Dj Vu Dig
 
 # Stage 1 - Tumbled Down
 fleet_event = {
@@ -5904,19 +5892,13 @@ country_event = {
 	# Phobe
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 		}
 		text = ancrel.9001.desc.phobe
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		text = ancrel.9001.desc
 	}
@@ -6026,19 +6008,13 @@ country_event = {
 	# Phobe
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 		}
 		text = ancrel.10050.desc.1.phobe
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		text = ancrel.10050.desc.1
 	}
@@ -6147,19 +6123,13 @@ country_event = {
 	# Phobe
 	desc = {
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 		}
 		text = ancrel.10200.desc.phobe
 	}
 	desc = {
 		trigger = {
-			NOR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = no
 		}
 		text = ancrel.10200.desc
 	}
@@ -6290,8 +6260,7 @@ country_event = {
 		trigger = {
 			OR = {
 				has_policy_flag = ai_outlawed
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+				is_spiritualist = yes
 			}
 		}
 		text = ancrel.10250.desc.antimachine
@@ -6300,8 +6269,7 @@ country_event = {
 		trigger = {
 			NOR = {
 				has_policy_flag = ai_outlawed
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+				is_spiritualist = yes
 			}
 		}
 		text = ancrel.10250.desc

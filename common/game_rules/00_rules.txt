@@ -58,8 +58,7 @@ can_add_claim = {
 			owner = {
 				NOR = {
 					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+					is_fallen_empire = yes
 				}
 			}
 		}
@@ -110,17 +109,13 @@ can_add_claim = {
 			exists = owner
 			owner = {
 				OR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 					has_valid_civic = civic_machine_assimilator
 				}
 			}
 			root = {
 				NOR = {
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 					has_valid_civic = civic_machine_assimilator
 				}
 			}
@@ -135,14 +130,12 @@ can_get_claim_from_lost_system = {
 		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE
 		OR = {
 			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
+			is_fallen_empire = yes
 		}
 		root = {
 			OR = {
 				is_country_type = default
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
+				is_fallen_empire = yes
 			}
 		}
 	}
@@ -250,8 +243,10 @@ can_vote_in_democratic_election = {
 #This = pop
 can_generate_leader_from_pop = {
 	has_citizenship_rights = yes
-	NOT = { has_trait = trait_syncretic_proles }
-	NOT = { has_trait = trait_nerve_stapled }
+	NOR = {
+		has_trait = trait_syncretic_proles
+		has_trait = trait_nerve_stapled
+	}
 	OR = {
 		is_robot_pop = no
 		root = {
@@ -753,12 +748,9 @@ can_species_be_assembled = {
 				root = {
 					# Event 'clones.3' should cover this, but extra safety check.
 					has_building = building_clone_army_clone_vat
-					NOT = {
-						check_variable = {
+					check_variable = {
 							which = clone_pops_missing
-							value = 0
-						}
-					}
+							value != 0 }
 				}
 			}
 			else = {
@@ -837,10 +829,10 @@ can_orbital_bombard = {
 		AND = {
 			from.controller = {
 				is_country_type = faction
-				NOT = { is_same_value = root.owner }
+				NOT = { is_same_empire = root.owner }
 			}
 			from.owner = {
-				is_same_value = root.owner
+				is_same_empire = root.owner
 			}
 		}
 	}
@@ -901,7 +893,7 @@ should_colony_be_destroyed_on_pc_change = {
 is_extradimensional_portal = { # is this portal mine
 	is_ship_size = dimensional_portal_ed
 	OR = {
-		owner = { is_same_value = root } # owner is me
+		is_owned_by = root # owner is me
 		OR = {
 			AND = { # portal is unbidden and I am unbidden
 				root = { is_country_type = extradimensional }
@@ -931,7 +923,7 @@ is_extradimensional_anchor = {
 		}
 	}
 	any_owned_ship = { is_ship_size = starbase_exd }
-	owner = { is_same_value = root }
+	is_owned_by = root
 }
 
 # Will colonizing this planet tick off a fallen empire?
@@ -954,8 +946,10 @@ will_anger_fallen_empire = {
 # root: country
 can_have_robot_pops = {
 	exists = this
-	NOT = { has_authority = auth_hive_mind }
-	NOT = { has_policy_flag = robots_outlawed }
+	NOR = {
+		has_authority = auth_hive_mind
+		has_policy_flag = robots_outlawed
+	}
 }
 
 # Can purge/disassembly be individually stopped by owner
@@ -1448,10 +1442,7 @@ can_build_branch_offices = {
 can_support_branch_offices = {
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_FALLEN_EMPIRES
-		NOR = {
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
-		}
+		is_fallen_empire = no
 	}
 	custom_tooltip = {
 		fail_text = BRANCH_OFFICE_NOT_ON_MEGACORP_PLANET
@@ -1491,7 +1482,7 @@ can_build_branch_office_on_planet = {
 			root = {
 				is_subject = yes
 				is_subject_type = subsidiary
-				overlord = { is_same_value = prevprev.owner }
+				overlord = { is_same_empire = prevprev.owner }
 			}
 			owner = {
 				is_subject = yes
@@ -1766,10 +1757,7 @@ can_planet_auto_migrate = {
 	}
 	exists = owner
 	owner = {
-		OR = {
-			is_country_type = default
-			is_country_type = awakened_fallen_empire
-		}
+		is_country_type_with_subjects = yes
 	}
 }
 
